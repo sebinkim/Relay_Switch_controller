@@ -583,7 +583,7 @@ int mm= minute();
 int ss = second();
 
 int mms=millis();
-  if (isPressedautoButton && connectedSerial & start_hh==hh && start_mm==mm && start_ss==ss )  
+  if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )  
         {
         ch6_on();
         }
@@ -645,8 +645,8 @@ void beattime(int hh, int mm, int ss){
   text("Roof Close time   "+ RClose_hh +" : "+ RClose_mm +" : "+ RClose_ss, 285, 135);
 
   int mms=millis();
-//  if (isPressedautoButton && connectedSerial & start_hh==hh && start_mm==mm && start_ss==ss )  
-  if (connectedSerial & ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
+//  if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )
+  if (connectedSerial && ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
     ch6_on(); //open
   }
   if(connectedSerial && RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
