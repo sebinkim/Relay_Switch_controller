@@ -120,7 +120,8 @@ Serial.print(statusPin4);
 Serial.print(statusPin5);
 Serial.print(statusPin6);
 Serial.print(statusPin7);
-Serial.println(statusPin8);
+Serial.print(statusPin8);
+Serial.println("");
 }
 
 

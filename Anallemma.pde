@@ -225,13 +225,13 @@ void Disconnect(int theValue)
 {
   if (connectedSerial)//Check if there is a connection established
   {
-     serial.stop();
-     serial = null;
-     connectedSerial = false;
-     background(0); // background color change by Kevin
+    serial.stop();
+    serial = null;
+    connectedSerial = false;
+    background(0); // background color change by Kevin
+    set_buttontexts();
     fill(255,255,255);
     text("Serial disconnected", 80, 60);
-  
     println("Serial disconnected");
   }
   else
@@ -241,16 +241,25 @@ void Disconnect(int theValue)
 
 void createModalDialog(String message) {
     messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
-
 }
 
 public void One_shot() { //One shot
   if (isPressedCh2Button && connectedSerial) {
-    serial.write('x'); println("type 'x'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("One shot", status_text_x, status_text_y);
+    serial.write('x');
+    println("type 'x'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("One shot", status_text_x, status_text_y);
   } else if (!isPressedCh2Button && connectedSerial) {
-    serial.write('x'); println("type 'x'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("One shot", status_text_x, status_text_y);
+    serial.write('x');
+    println("type 'x'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("One shot", status_text_x, status_text_y);
   }
   isPressedCh2Button = !isPressedCh2Button;
     ((Toggle)cp5.getController("on2/off2")).setState(false);
@@ -259,11 +268,21 @@ public void One_shot() { //One shot
 
 public void Bulb_on() { //Bulb shot start
   if (isPressedCh2Button && connectedSerial) {
-    serial.write('w'); println("type 'w'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Bulb shot on", status_text_x, status_text_y);
-    } else if (!isPressedCh2Button && connectedSerial) {
-        serial.write('w'); println("type 'w'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Bulb shot on", status_text_x, status_text_y);
+    serial.write('w');
+    println("type 'w'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("Bulb shot on", status_text_x, status_text_y);
+  } else if (!isPressedCh2Button && connectedSerial) {
+    serial.write('w');
+    println("type 'w'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("Bulb shot on", status_text_x, status_text_y);
   }
   isPressedCh2Button = !isPressedCh2Button;
   ((Toggle)cp5.getController("on2/off2")).setState(true);
@@ -271,11 +290,21 @@ public void Bulb_on() { //Bulb shot start
 }
 public void Bulb_off() { //Bulb shot stop
   if (isPressedCh2Button && connectedSerial) {
-    serial.write('s'); println("type 's'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Bulb shot off", status_text_x, status_text_y);
-    } else if (!isPressedCh2Button && connectedSerial) {
-        serial.write('s'); println("type 's'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Bulb shot off", status_text_x, status_text_y);
+    serial.write('s');
+    println("type 's'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("Bulb shot off", status_text_x, status_text_y);
+  } else if (!isPressedCh2Button && connectedSerial) {
+    serial.write('s');
+    println("type 's'");
+    fill(255);
+    textSize(11);
+    rect(status_text_x-50,15,100,25);
+    fill(0);
+    text("Bulb shot off", status_text_x, status_text_y);
   }
   isPressedCh2Button = !isPressedCh2Button;
   ((Toggle)cp5.getController("on2/off2")).setState(true);
@@ -323,11 +352,11 @@ public void auto_off() {
 */
 
 void draw(){
-  int y= year();
+  int y = year();
   int m = month();
   int d = day();
   int hh = hour();
-  int mm= minute();
+  int mm = minute();
   int ss = second();
   beattime(hh, mm, ss);
 }
