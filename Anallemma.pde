@@ -1,4 +1,3 @@
-// test
 import processing.serial.*;  
 import controlP5.*;
 import javax.swing.*;
