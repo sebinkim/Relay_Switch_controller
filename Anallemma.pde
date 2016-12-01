@@ -650,16 +650,15 @@ int mms=millis();
 //  if (isPressedautoButton && connectedSerial & start_hh==hh && start_mm==mm && start_ss==ss )  
    if (connectedSerial & ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss )  
             {
-        ch6_on();
+        ch6_on(); //open
         }
     if(connectedSerial && RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss )  
        {
-        ch7_on();
+        ch7_on();  //close
       }
     if (connectedSerial && (ss==0) || (ss==15) || (ss==30) || (ss==45))
     {
-  //    One_shot(); 
-      println(ss);
+    One_shot();     println(ss);
   } else if (!isPressedautoButton && connectedSerial) {
   
   }
