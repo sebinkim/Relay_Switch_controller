@@ -115,138 +115,7 @@ void setup()
     serial.write("G;"); // Go
   }
   background(0);
-  cp5.addButton("ch1_on")
-     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0)
-     .setSize(80,20)
-     ;
-  cp5.addButton("ch1_off")
-     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on1/off1")
-     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0)
-     .setSize(50,20)
-     ;
-  cp5.addButton("Bulb_on")
-     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0+ch_button_h*1)
-     .setSize(80,20)
-     ;
-  cp5.addButton("Bulb_off")
-     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*1)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on2/off2")
-     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*1)
-     .setSize(50,20)
-     ;
-  cp5.addButton("One_shot")
-  .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0+ch_button_h*1+25)
-  .setSize(80,20)
-     ;
-  /*
-  cp5.addButton("ch3_on")
-     .setPosition(ch_button_x0,ch_button_y0+ch_button_h*2)
-     .setSize(80,20)
-     ;
-  cp5.addButton("ch3_off")
-     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*2)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on3/off3")
-     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*2)
-     .setSize(50,20)
-     ;
-  */
-  cp5.addButton("ch4_on")
-     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0+ch_button_h*3)
-     .setSize(80,20)
-     ;
-  cp5.addButton("ch4_off")
-    .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*3)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on4/off4")
-     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*3)
-     .setSize(50,20)
-     ;    
-  cp5.addButton("ch5_on")
-     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0+ch_button_h*4)
-     .setSize(80,20)
-     ;
-  cp5.addButton("ch5_off")
-     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*4)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on5/off5")
-          .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*4)
-     .setSize(50,20)
-     ;
-  cp5.addButton("ch6_on")
-  .setPosition(ch_button_x0+250+ch_button_w*0,ch_button_y0+ch_button_h*0+22)
-     .setSize(80,20)
-     ;
-/* 
-cp5.addButton("ch6_off")
-.setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*4)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on6/off6")
-     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*4)
-     .setSize(50,20)
-     ;
-*/
-  cp5.addButton("ch7_on")
-     .setPosition(ch_button_x0+250+ch_button_w*1,ch_button_y0+ch_button_h*0+22)
-     .setSize(80,20)
-     ;
-/*
-  cp5.addButton("ch7_off")
-     .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*1)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on7/off7")
-     .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*1)
-     .setSize(50,20)
-     ;
-*/
-  cp5.addButton("ch8_on")
-  .setPosition(ch_button_x0+250+ch_button_w*2,ch_button_y0+ch_button_h*0+22)
-     .setSize(80,20)
-     ;
-/*
-  cp5.addButton("ch8_off")
-  .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*2)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on8/off8")
-  .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*2)
-     .setSize(50,20)
-     ;
-*/
- cp5.addButton("auto_on")
-     .setPosition(ch_button_x0+260+ch_button_w*0,ch_button_y0+ch_button_h*3)
-     .setSize(80,20)
-     ;
-  cp5.addButton("auto_off")
-     .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*3)
-     .setSize(80,20)
-     ;
-  cp5.addToggle("on_auto/off_auto")
-     .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*3)
-     .setSize(50,20)
-     ;  
-
-    textSize(14);
-    text("Anallemma Camera Power control", 20, ch_button_y0+ch_button_h*0-10);
-    text("Anallemma Camera Shutter", 20, ch_button_y0+ch_button_h*1-10);
-    text("Astronomical CCD Power control", 20, ch_button_y0+ch_button_h*3-10);
-    text("Motor focuser Power control", 20, ch_button_y0+ch_button_h*4-10);
-    text("Roof control", 272+ch_button_w*0, ch_button_y0+ch_button_h*0-10);
-    text("Open", 290+ch_button_w*0, ch_button_y0+ch_button_h*0+15);
-    text("Close", 290+ch_button_w*1, ch_button_y0+ch_button_h*0+15);
-    text("Stop", 290+ch_button_w*2, ch_button_y0+ch_button_h*0+15);
-    text("Anallemma Automation", 272+ch_button_w*0, ch_button_y0+ch_button_h*3-10);     
-
+  set_buttons();
 }
 
 
@@ -315,6 +184,7 @@ void customize(DropdownList ddl)
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
 }
+
 void controlEvent(ControlEvent theEvent) {
   if (theEvent.isGroup()) {
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
@@ -368,67 +238,12 @@ void Disconnect(int theValue)
     println("Couldn't disconnect");
 }
 
-public void ch1_on() {
-  if (isPressedCh1Button && connectedSerial) {
-    serial.write('q'); println("type 'q'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch1 on", status_text_x, status_text_y);
-  } else if (!isPressedCh1Button && connectedSerial) {
-    serial.write('q'); println("type 'q'");    
-  fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch1 on", status_text_x, status_text_y);
-  }
-  isPressedCh1Button = !isPressedCh1Button;
-    ((Toggle)cp5.getController("on1/off1")).setState(true);
-      messageBoxResult = -1;
+
+void createModalDialog(String message) {
+    messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
+
 }
 
-public void ch1_off() {
-  createModalDialog("Ch1 off");
-  if (messageBoxResult >= 1)
-    return;
-  if (isPressedCh1Button && connectedSerial) {
-    serial.write('a'); println("type 'a'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch1 off", status_text_x, status_text_y);
-  } else if (!isPressedCh1Button && connectedSerial) {
-    serial.write('a'); println("type 'a'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch1 off", status_text_x, status_text_y);
-  }
-  isPressedCh1Button = !isPressedCh1Button;
-    ((Toggle)cp5.getController("on1/off1")).setState(false);
-      messageBoxResult = -1;
-}
-
-/* 
-public void ch2_on() { 
-  if (isPressedCh2Button && connectedSerial) {
-    serial.write('w'); println("type 'w'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch2 on", status_text_x, status_text_y);
-  } else if (!isPressedCh2Button && connectedSerial) {
-    serial.write('w'); println("type 'w'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch2 on", status_text_x, status_text_y);
-  }
-  isPressedCh2Button = !isPressedCh2Button;
-  ((Toggle)cp5.getController("on2/off2")).setState(true);
-     messageBoxResult = -1;
-}
-
-
-public void ch2_off() {
-  createModalDialog("ch2 off");
-  if (messageBoxResult >= 1)
-    return;
-  if (isPressedCh2Button && connectedSerial) {
-    serial.write('s');
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch2 off", status_text_x, status_text_y);
-  } else if (!isPressedCh2Button && connectedSerial) {
-    serial.write('s');
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch2 off", status_text_x, status_text_y);
-  }
-  isPressedCh2Button = !isPressedCh2Button;
-    ((Toggle)cp5.getController("on2/off2")).setState(false);
-   
-   messageBoxResult = -1;
-}   
-*/
 public void One_shot() { //One shot
   if (isPressedCh2Button && connectedSerial) {
     serial.write('x'); println("type 'x'");
@@ -441,6 +256,7 @@ public void One_shot() { //One shot
     ((Toggle)cp5.getController("on2/off2")).setState(false);
        messageBoxResult = -1;
 }
+
 public void Bulb_on() { //Bulb shot start
   if (isPressedCh2Button && connectedSerial) {
     serial.write('w'); println("type 'w'");
@@ -465,117 +281,8 @@ public void Bulb_off() { //Bulb shot stop
   ((Toggle)cp5.getController("on2/off2")).setState(true);
      messageBoxResult = -1;
 }
-public void ch3_on() {
-  if (isPressedCh3Button && connectedSerial) {
-    serial.write('e');
-    textSize(11); text("Ch3 on", status_text_x, status_text_y);
-  } else if (!isPressedCh3Button && connectedSerial) {
-    serial.write('e');
-  }
-  isPressedCh3Button = !isPressedCh3Button;
-  textSize(11); text("Ch3 on", status_text_x, status_text_y);
-    ((Toggle)cp5.getController("on3/off3")).setState(true);
-       messageBoxResult = -1;
-}
 
-public void ch3_off() {
-  createModalDialog("Ch3 off");
-   if (messageBoxResult >= 1)
-    return;
-  if (isPressedCh3Button && connectedSerial) {
-    serial.write('d'); println("type 'd'");
-    textSize(11); text("Ch3 off", status_text_x, status_text_y);
-  } else if (!isPressedCh3Button && connectedSerial) {
-    serial.write('d'); println("type 'd'");
-    textSize(11); text("Ch3 off", status_text_x, status_text_y);
-  }
-  isPressedCh3Button = !isPressedCh3Button;
-    ((Toggle)cp5.getController("on3/off3")).setState(false);
-       messageBoxResult = -1;
-}
 
-public void ch4_on() {
-  if (isPressedCh4Button && connectedSerial) {
-    serial.write('r'); println("type 'r'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch4 on", status_text_x, status_text_y);
-  } else if (!isPressedCh4Button && connectedSerial) {
-    serial.write('r'); println("type 'r'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch4 on", status_text_x, status_text_y);
-  }
-  isPressedCh4Button = !isPressedCh4Button;
-    ((Toggle)cp5.getController("on4/off4")).setState(true);
-       messageBoxResult = -1;
-}
-
-public void ch4_off() {
-  createModalDialog("Ch4 off");
-   if (messageBoxResult >= 1)
-    return;
-  if (isPressedCh4Button && connectedSerial) {
-    serial.write('f'); println("type 'f'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch4 off", status_text_x, status_text_y);
-  } else if (!isPressedCh4Button && connectedSerial) {
-    serial.write('f'); println("type 'f'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch4 off", status_text_x, status_text_y);
-  }
-  isPressedCh4Button = !isPressedCh4Button;
-    ((Toggle)cp5.getController("on4/off4")).setState(false);
-       messageBoxResult = -1;
-}
-
-public void ch5_on() {
-  if (isPressedCh5Button && connectedSerial) {
-    serial.write('t'); println("type 't'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch5 on", status_text_x, status_text_y);
-  } else if (!isPressedCh5Button && connectedSerial) {
-    serial.write('t'); println("type 't'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch5 on", status_text_x, status_text_y);
-  }
-  isPressedCh5Button = !isPressedCh5Button;
-    ((Toggle)cp5.getController("on5/off5")).setState(true);
-       messageBoxResult = -1;
-}
-
-public void ch5_off() {
-  createModalDialog("Ch5 off");
-   if (messageBoxResult >= 1)
-    return;
-  if (isPressedCh5Button && connectedSerial) {
-    serial.write('g'); println("type 'g'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch5 off", status_text_x, status_text_y);
-  } else if (!isPressedCh5Button && connectedSerial) {
-    serial.write('g'); println("type 'g'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch5 off", status_text_x, status_text_y);
-  }
-  isPressedCh5Button = !isPressedCh5Button;
-    ((Toggle)cp5.getController("on5/off5")).setState(false);
-       messageBoxResult = -1;
-}
-public void ch6_on() {
-  if (connectedSerial) {
-    serial.write('y'); println("type 'y'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Roof open", status_text_x, status_text_y);
-  }
-}
-public void ch7_on() {
-  if (connectedSerial) {
-    serial.write('u'); println("type 'u'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Roof close", status_text_x, status_text_y);
-  }
-}
-
-public void ch8_on() {
-  if (connectedSerial) {
-          serial.write('i'); println("type 'i'");
-    fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Roof stop", status_text_x, status_text_y);
-
-}
-}
-
-void createModalDialog(String message) {
-    messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
-
-}
 /*
 public void auto_on() {
 int hh = hour();
@@ -646,17 +353,18 @@ void beattime(int hh, int mm, int ss){
 
   int mms=millis();
 //  if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )
-  if (connectedSerial && ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
-    ch6_on(); //open
+  if(connectedSerial){
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
+      ch6_on(); //open
+    }
+    if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
+      ch7_on();  //close
+    }
+    if (ss==0 || ss==15 || ss==30 || ss==45) {
+      One_shot();
+      println(ss);
+    } else if (!isPressedautoButton) {
+    
+    }
   }
-  if(connectedSerial && RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
-    ch7_on();  //close
-  }
-  if (connectedSerial && (ss==0) || (ss==15) || (ss==30) || (ss==45)) {
-    One_shot();
-    println(ss);
-  } else if (!isPressedautoButton && connectedSerial) {
-  
-  }
-
 }
