@@ -107,7 +107,7 @@ void setup()
 
     cp5.addButton("Connect", 0, 185, 70, 52, 15);
     cp5.addButton("Disconnect", 0, 185, 88, 52, 15);
-}
+  }
   else // if useDropDownLists is false, it will connect automatically at startup
   {
     serial = new Serial(this, Serial.list()[defaultComPort], defaultBaudrate);
@@ -115,7 +115,7 @@ void setup()
     connectedSerial = true;
     serial.write("G;"); // Go
   }
-background(0);
+  background(0);
   cp5.addButton("ch1_on")
      .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0)
      .setSize(80,20)
@@ -257,17 +257,17 @@ void Abort(int theValue)
   {
     serial.write("A;");
     aborted = true;
-}
+  }
   else
     println("Establish a serial connection first!");
 }
 void Continue(int theValue)
 {
-    if (connectedSerial) 
+  if (connectedSerial) 
   {
     serial.write("C;");
     aborted = false;
-        background(100);
+    background(100);
   }
   else
     println("Establish a serial connection first!");
@@ -317,7 +317,7 @@ void customize(DropdownList ddl)
   ddl.setColorActive(color(255, 128));
 }
 void controlEvent(ControlEvent theEvent) {
- if (theEvent.isGroup()) {
+  if (theEvent.isGroup()) {
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
   } 
   else if (theEvent.isController()) {
@@ -330,7 +330,7 @@ void controlEvent(ControlEvent theEvent) {
 
 void Connect(int theValue)
 {
-    println("port Num = " + Serial.list()[portNumber]);
+  println("port Num = " + Serial.list()[portNumber]);
   if (selectedBaudrate != -1 && portNumber != -1 && !connectedSerial)//Check if com port and baudrate is set and if there is not already a connection established
   {
     println("ConnectSerial");
@@ -378,9 +378,8 @@ public void ch1_on() {
   fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Ch1 on", status_text_x, status_text_y);
   }
   isPressedCh1Button = !isPressedCh1Button;
-  ((Toggle)cp5.getController("on1/off1")).setState(true);
-     messageBoxResult = -1;
-     
+    ((Toggle)cp5.getController("on1/off1")).setState(true);
+      messageBoxResult = -1;
 }
 
 public void ch1_off() {
@@ -396,7 +395,7 @@ public void ch1_off() {
   }
   isPressedCh1Button = !isPressedCh1Button;
     ((Toggle)cp5.getController("on1/off1")).setState(false);
-   messageBoxResult = -1;
+      messageBoxResult = -1;
 }
 
 /* 
@@ -557,14 +556,13 @@ public void ch6_on() {
   if (connectedSerial) {
     serial.write('y'); println("type 'y'");
     fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Roof open", status_text_x, status_text_y);
-    }
+  }
 }
 public void ch7_on() {
   if (connectedSerial) {
-          serial.write('u'); println("type 'u'");
+    serial.write('u'); println("type 'u'");
     fill(255); textSize(11); rect(status_text_x-50,15,100,25); fill(0); text("Roof close", status_text_x, status_text_y);
-
-}
+  }
 }
 
 public void ch8_on() {
@@ -619,15 +617,16 @@ public void auto_off() {
 */
 
 void draw(){
-int y= year();
-int m = month();
-int d = day();
-int hh = hour();
-int mm= minute();
-int ss = second();
-beattime(hh, mm, ss);
-
+  int y= year();
+  int m = month();
+  int d = day();
+  int hh = hour();
+  int mm= minute();
+  int ss = second();
+  beattime(hh, mm, ss);
 }
+
+
 void beattime(int hh, int mm, int ss){
   fill(255);
   rect(275,70,180,20);
@@ -636,7 +635,7 @@ void beattime(int hh, int mm, int ss){
   textAlign(LEFT);
   textSize(13);
   text("Com Clock        "+ hh +" : "+ mm +" : "+ss, 285, 85);
-    fill(255);
+  fill(255);
   rect(275,95,180,20);
   rect(275,120,180,20);
   fill(0);
@@ -646,19 +645,17 @@ void beattime(int hh, int mm, int ss){
   text("Roof Open time    "+ ROpen_hh +" : "+ ROpen_mm +" : "+ ROpen_ss, 285, 110);
   text("Roof Close time   "+ RClose_hh +" : "+ RClose_mm +" : "+ RClose_ss, 285, 135);
 
-int mms=millis();
+  int mms=millis();
 //  if (isPressedautoButton && connectedSerial & start_hh==hh && start_mm==mm && start_ss==ss )  
-   if (connectedSerial & ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss )  
-            {
-        ch6_on(); //open
-        }
-    if(connectedSerial && RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss )  
-       {
-        ch7_on();  //close
-      }
-    if (connectedSerial && (ss==0) || (ss==15) || (ss==30) || (ss==45))
-    {
-    One_shot();     println(ss);
+  if (connectedSerial & ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
+    ch6_on(); //open
+  }
+  if(connectedSerial && RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
+    ch7_on();  //close
+  }
+  if (connectedSerial && (ss==0) || (ss==15) || (ss==30) || (ss==45)) {
+    One_shot();
+    println(ss);
   } else if (!isPressedautoButton && connectedSerial) {
   
   }
