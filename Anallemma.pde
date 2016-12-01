@@ -207,7 +207,8 @@ void Connect(int theValue)
     fill(255,255,255);
     textAlign(LEFT);
     text("Serial connected", 20, 60);
-    set_buttontexts();
+    
+    set_button_texts();
     serial = new Serial(this, Serial.list()[portNumber], Integer.parseInt(baudrates[selectedBaudrate]));
     connectedSerial = true;
     serial.bufferUntil('\n');
@@ -229,7 +230,7 @@ void Disconnect(int theValue)
     serial = null;
     connectedSerial = false;
     background(0); // background color change by Kevin
-    set_buttontexts();
+    set_button_texts();
     fill(255,255,255);
     text("Serial disconnected", 80, 60);
     println("Serial disconnected");
@@ -247,19 +248,11 @@ public void One_shot() { //One shot
   if (isPressedCh2Button && connectedSerial) {
     serial.write('x');
     println("type 'x'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("One shot", status_text_x, status_text_y);
+    status_text("One shot");
   } else if (!isPressedCh2Button && connectedSerial) {
     serial.write('x');
     println("type 'x'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("One shot", status_text_x, status_text_y);
+    status_text("One shot");
   }
   isPressedCh2Button = !isPressedCh2Button;
     ((Toggle)cp5.getController("on2/off2")).setState(false);
@@ -270,19 +263,11 @@ public void Bulb_on() { //Bulb shot start
   if (isPressedCh2Button && connectedSerial) {
     serial.write('w');
     println("type 'w'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("Bulb shot on", status_text_x, status_text_y);
+    status_text("Bulb shot on");
   } else if (!isPressedCh2Button && connectedSerial) {
     serial.write('w');
     println("type 'w'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("Bulb shot on", status_text_x, status_text_y);
+    status_text("Bulb shot on");
   }
   isPressedCh2Button = !isPressedCh2Button;
   ((Toggle)cp5.getController("on2/off2")).setState(true);
@@ -292,19 +277,11 @@ public void Bulb_off() { //Bulb shot stop
   if (isPressedCh2Button && connectedSerial) {
     serial.write('s');
     println("type 's'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("Bulb shot off", status_text_x, status_text_y);
+    status_text("Bulb shot off");
   } else if (!isPressedCh2Button && connectedSerial) {
     serial.write('s');
     println("type 's'");
-    fill(255);
-    textSize(11);
-    rect(status_text_x-50,15,100,25);
-    fill(0);
-    text("Bulb shot off", status_text_x, status_text_y);
+    status_text("Bulb shot off");
   }
   isPressedCh2Button = !isPressedCh2Button;
   ((Toggle)cp5.getController("on2/off2")).setState(true);
@@ -389,7 +366,8 @@ void beattime(int hh, int mm, int ss){
     if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
       ch7_on();  //close
     }
-    if (ss==0 || ss==15 || ss==30 || ss==45) {
+//    if (ss==0 || ss==15 || ss==30 || ss==45) {
+    if(ss == 0){
       One_shot();
       println(ss);
     } else if (!isPressedautoButton) {

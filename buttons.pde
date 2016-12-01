@@ -119,9 +119,9 @@ void set_buttons(){
     .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*3)
     .setSize(50,20)
     ;  
-  set_buttontexts();
+  set_button_texts();
 }
-void set_buttontexts(){
+void set_button_texts(){
   textSize(14);
   text("Anallemma Camera Power control", 20, ch_button_y0+ch_button_h*0-10);
   text("Anallemma Camera Shutter", 20, ch_button_y0+ch_button_h*1-10);
