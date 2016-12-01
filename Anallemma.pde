@@ -207,7 +207,7 @@ void Connect(int theValue)
     fill(255,255,255);
     textAlign(LEFT);
     text("Serial connected", 20, 60);
-  
+    set_buttontexts();
     serial = new Serial(this, Serial.list()[portNumber], Integer.parseInt(baudrates[selectedBaudrate]));
     connectedSerial = true;
     serial.bufferUntil('\n');
