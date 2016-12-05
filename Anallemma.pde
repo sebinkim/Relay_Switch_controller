@@ -251,7 +251,6 @@ public void One_shot() { //One shot
     status_text("One shot");
   }
   isPressedCh2Button = !isPressedCh2Button;
-    ((Toggle)cp5.getController("on2/off2")).setState(false);
        messageBoxResult = -1;
 }
 
@@ -262,7 +261,6 @@ public void Bulb_on() { //Bulb shot start
     status_text("Bulb shot on");
   }
   isPressedCh2Button = !isPressedCh2Button;
-  ((Toggle)cp5.getController("on2/off2")).setState(true);
      messageBoxResult = -1;
 }
 public void Bulb_off() { //Bulb shot stop
@@ -272,7 +270,6 @@ public void Bulb_off() { //Bulb shot stop
     status_text("Bulb shot off");
   }
   isPressedCh2Button = !isPressedCh2Button;
-  ((Toggle)cp5.getController("on2/off2")).setState(true);
      messageBoxResult = -1;
 }
 
@@ -299,7 +296,6 @@ int mms=millis();
   
   }
   isPressedautoButton = !isPressedautoButton;
-    ((Toggle)cp5.getController("auto")).setState(true);
        messageBoxResult = -1;
 }
 
@@ -311,7 +307,6 @@ public void auto_off() {
   } else if (!isPressedautoButton && connectedSerial) {
   }
   isPressedautoButton = !isPressedautoButton;
-    ((Toggle)cp5.getController("task")).setState(false);
        messageBoxResult = -1;
 }
 */
