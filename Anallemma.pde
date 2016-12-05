@@ -176,7 +176,7 @@ void customize(DropdownList ddl)
   }
   else if (ddl.getName() == "COMPort")
   {
-    ddl.getCaptionLabel().set("Select COM port");//Set the lable of the bar when nothing is selected. 
+    ddl.getCaptionLabel().set("Select COM port");//Set the lable of the bar when nothing is selected.
     //Now well add the ports to the list, we use a for loop for that.
     for (int i=0; i<serial.list().length; i++)    
       ddl.addItem(serial.list()[i], i);//This is the line doing the actual adding of items, we use the current loop we are in to determin what place in the char array to access and what item number to add it as.
@@ -336,7 +336,7 @@ void beattime(int hh, int mm, int ss){
   textFont(f,20);
   textAlign(LEFT);
   textSize(13);
-  text("Com Clock        "+ hh +" : "+ mm +" : "+ss, 285, 85);
+  text("Com Clock        " + hh + " : " + mm + " : " + ss, 285, 85);
   fill(255);
   rect(275,95,180,20);
   rect(275,120,180,20);
@@ -344,8 +344,8 @@ void beattime(int hh, int mm, int ss){
   textFont(f,20);
   textAlign(LEFT);
   textSize(13);
-  text("Roof Open time    "+ ROpen_hh +" : "+ ROpen_mm +" : "+ ROpen_ss, 285, 110);
-  text("Roof Close time   "+ RClose_hh +" : "+ RClose_mm +" : "+ RClose_ss, 285, 135);
+  text("Roof Open time    " + ROpen_hh  + " : " + ROpen_mm  + " : " + ROpen_ss,  285, 110);
+  text("Roof Close time   " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 285, 135);
   
   if(connectedSerial){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
