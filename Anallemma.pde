@@ -245,11 +245,7 @@ void createModalDialog(String message) {
 }
 
 public void One_shot() { //One shot
-  if (isPressedCh2Button && connectedSerial) {
-    serial.write('x');
-    println("type 'x'");
-    status_text("One shot");
-  } else if (!isPressedCh2Button && connectedSerial) {
+  if(connectedSerial){
     serial.write('x');
     println("type 'x'");
     status_text("One shot");
@@ -260,11 +256,7 @@ public void One_shot() { //One shot
 }
 
 public void Bulb_on() { //Bulb shot start
-  if (isPressedCh2Button && connectedSerial) {
-    serial.write('w');
-    println("type 'w'");
-    status_text("Bulb shot on");
-  } else if (!isPressedCh2Button && connectedSerial) {
+  if(connectedSerial){
     serial.write('w');
     println("type 'w'");
     status_text("Bulb shot on");
@@ -274,11 +266,7 @@ public void Bulb_on() { //Bulb shot start
      messageBoxResult = -1;
 }
 public void Bulb_off() { //Bulb shot stop
-  if (isPressedCh2Button && connectedSerial) {
-    serial.write('s');
-    println("type 's'");
-    status_text("Bulb shot off");
-  } else if (!isPressedCh2Button && connectedSerial) {
+  if(connectedSerial){
     serial.write('s');
     println("type 's'");
     status_text("Bulb shot off");
@@ -328,6 +316,9 @@ public void auto_off() {
 }
 */
 
+
+int previous_ss;
+
 void draw(){
   int y = year();
   int m = month();
@@ -337,7 +328,6 @@ void draw(){
   int ss = second();
   beattime(hh, mm, ss);
 }
-
 
 void beattime(int hh, int mm, int ss){
   fill(255);
@@ -356,9 +346,7 @@ void beattime(int hh, int mm, int ss){
   textSize(13);
   text("Roof Open time    "+ ROpen_hh +" : "+ ROpen_mm +" : "+ ROpen_ss, 285, 110);
   text("Roof Close time   "+ RClose_hh +" : "+ RClose_mm +" : "+ RClose_ss, 285, 135);
-
-  int mms=millis();
-//  if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )
+  
   if(connectedSerial){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
       ch6_on(); //open
@@ -366,12 +354,14 @@ void beattime(int hh, int mm, int ss){
     if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
       ch7_on();  //close
     }
-//    if (ss==0 || ss==15 || ss==30 || ss==45) {
-    if(ss == 0){
-      One_shot();
-      println(ss);
+    if (ss==0 || ss==15 || ss==30 || ss==45) {
+      if(previous_ss != ss){
+        One_shot();
+        println(ss);
+      }
     } else if (!isPressedautoButton) {
     
     }
   }
+  previous_ss = ss;
 }
