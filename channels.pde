@@ -1,3 +1,14 @@
+boolean isCh1 = false; // not sure that it'll be used, but save state anyway
+// TODO : if done testing on ch1, must add visibility of ch2, ch4, ch5, too.
+
+// current problem : when button gets into 'invisible' state, it stops at "light blue" state, and cannot press other buttons (not a lag. Clock goes well...)
+
+
+
+
+// How about... let's just make toggle rectangle(?) to show each state. Making buttons visible/invisible won't be necessary.
+
+
 public void ch1_on() {
   if (connectedSerial) {
     serial.write('q'); println("type 'q'");
@@ -5,6 +16,10 @@ public void ch1_on() {
   }
   isPressedCh1Button = !isPressedCh1Button;
   messageBoxResult = -1;
+  isCh1 = true;
+  ((Toggle)cp5.getController("on/off1")).setState(false);
+//  cp5.getController("ch1_on").setVisible(false);
+//  cp5.getController("ch1_off").setVisible(true);
 }
 
 public void ch1_off() {
@@ -16,6 +31,10 @@ public void ch1_off() {
   }
   isPressedCh1Button = !isPressedCh1Button;
   messageBoxResult = -1;
+  isCh1 = false;
+  ((Toggle)cp5.getController("on/off1")).setState(true);
+//  cp5.getController("ch1_on").setVisible(true);
+//  cp5.getController("ch1_off").setVisible(false);
 }
 
 /* 

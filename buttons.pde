@@ -1,12 +1,22 @@
 void set_buttons(){
+ 
   cp5.addButton("ch1_on")
     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0)
     .setSize(80,20)
+    //.setVisible(!isCh1)
     ;
   cp5.addButton("ch1_off")
     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0)
     .setSize(80,20)
+    //.setVisible(isCh1)
     ;
+  cp5.addToggle("on/off1")
+   .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0)
+   .setSize(50,20)
+   .setValue(true)
+   .setMode(ControlP5.SWITCH)
+   .lock()
+   ;
   cp5.addButton("Bulb_on")
     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0+ch_button_h*1)
     .setSize(80,20)
@@ -49,32 +59,14 @@ void set_buttons(){
     .setPosition(ch_button_x0+250+ch_button_w*0,ch_button_y0+ch_button_h*0+22)
     .setSize(80,20)
     ;
-/* 
-  cp5.addButton("ch6_off")
-    .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*4)
-    .setSize(80,20)
-    ;
-*/
   cp5.addButton("ch7_on")
     .setPosition(ch_button_x0+250+ch_button_w*1,ch_button_y0+ch_button_h*0+22)
     .setSize(80,20)
     ;
-/*
-  cp5.addButton("ch7_off")
-    .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*1)
-    .setSize(80,20)
-    ;
-*/
   cp5.addButton("ch8_on")
     .setPosition(ch_button_x0+250+ch_button_w*2,ch_button_y0+ch_button_h*0+22)
     .setSize(80,20)
     ;
-/*
-  cp5.addButton("ch8_off")
-    .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*2)
-    .setSize(80,20)
-    ;
-*/
   cp5.addButton("auto_on")
     .setPosition(ch_button_x0+260+ch_button_w*0,ch_button_y0+ch_button_h*3)
     .setSize(80,20)
