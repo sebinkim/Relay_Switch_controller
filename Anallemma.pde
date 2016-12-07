@@ -21,12 +21,12 @@ boolean useDropDownLists = true; // Set if you want to use the dropdownlist or n
 byte defaultComPort = 0;
 int defaultBaudrate = 115200;
 
-int ROpen_hh = 23 ;
-int ROpen_mm= 5 ;
-int ROpen_ss = 00 ;
-int RClose_hh = 4 ;
+int ROpen_hh = 11 ;
+int ROpen_mm= 00 ;
+int ROpen_ss = 03 ;
+int RClose_hh = 12 ;
 int RClose_mm= 00 ;
-int RClose_ss = 00 ;
+int RClose_ss = 03 ;
 
 //Dialog
 int messageBoxResult = -1;
@@ -325,11 +325,11 @@ void beattime(int hh, int mm, int ss){
   
   if(connectedSerial){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
-      ch6_on(); //open
+      ch6_on_on(); //open
     }
     if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
-      ch7_on();  //close
-    }
+      ch7_on_on();  //close
+  }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
         One_shot();

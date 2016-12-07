@@ -153,11 +153,24 @@ public void ch6_on() {
     status_text("Roof open");
   }
 }
+public void ch6_on_on() {
+  if (connectedSerial) {
+    serial.write('y'); println("type 'y'"); delay(100);serial.write('y'); println("type 'y'");
+    status_text("Roop Open");
+  }
+}
+
 public void ch7_on() {
   createModalDialog("Are you sure to close roof?");
   if (connectedSerial) {
     serial.write('u'); println("type 'u'");
     status_text("Roof close");
+  }
+}
+public void ch7_on_on() {
+  if (connectedSerial) {
+    serial.write('u'); println("type 'u'"); delay(100);serial.write('u'); println("type 'u'");
+    status_text("Roop Close");
   }
 }
 
