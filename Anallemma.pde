@@ -101,7 +101,7 @@ void setup()
     baudrate = cp5.addDropdownList("Baudrate", 120, 70, 55, 200); // Make a dropdown with all the available baudrates   
     customize(baudrate); // Setup the dropdownlist by using a function
 
-    ROpen_HH = cp5.addDropdownList("OH", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
+    ROpen_HH = cp5.addDropdownList("ROpen_dropdown", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
     customize(ROpen_HH); // Setup the dropdownlist by using a function
 
     cp5.addButton("Connect", 0, 185, 70, 52, 15);
@@ -180,6 +180,12 @@ void customize(DropdownList ddl)
     //Now well add the ports to the list, we use a for loop for that.
     for (int i=0; i<serial.list().length; i++)    
       ddl.addItem(serial.list()[i], i);//This is the line doing the actual adding of items, we use the current loop we are in to determin what place in the char array to access and what item number to add it as.
+  }
+  else if (ddl.getName() == "ROpen_dropdown"){
+    ddl.getCaptionLabel().set("Select roof open time");
+    for (int i=0; i<OH.length; i++){
+      ddl.addItem(OH[i],i);
+    }
   }
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
