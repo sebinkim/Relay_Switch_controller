@@ -1,14 +1,3 @@
-boolean isCh1 = false; // not sure that it'll be used, but save state anyway
-// TODO : if done testing on ch1, must add visibility of ch2, ch4, ch5, too.
-
-// current problem : when button gets into 'invisible' state, it stops at "light blue" state, and cannot press other buttons (not a lag. Clock goes well...)
-
-
-
-
-// How about... let's just make toggle rectangle(?) to show each state. Making buttons visible/invisible won't be necessary.
-
-
 public void ch1_on() {
   if (connectedSerial) {
     serial.write('q'); println("type 'q'");
@@ -17,14 +6,10 @@ public void ch1_on() {
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(true);
   messageBoxResult = -1;
-  isCh1 = true;
-  ((Toggle)cp5.getController("on/off1")).setState(false);
-//  cp5.getController("ch1_on").setVisible(false);
-//  cp5.getController("ch1_off").setVisible(true);
 }
 
 public void ch1_off() {
-  createModalDialog("Ch1 off");
+  createModalDialog("Are you sure to turn Anallemma Camera Power off?");
   if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     serial.write('a'); println("type 'a'");
@@ -33,10 +18,6 @@ public void ch1_off() {
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(false);
   messageBoxResult = -1;
-  isCh1 = false;
-  ((Toggle)cp5.getController("on/off1")).setState(true);
-//  cp5.getController("ch1_on").setVisible(true);
-//  cp5.getController("ch1_off").setVisible(false);
 }
 
 /* 
@@ -63,6 +44,40 @@ public void ch2_off() {
   messageBoxResult = -1;
 }   
 */
+
+
+public void One_shot() { //One shot
+  if(connectedSerial){
+    serial.write('x');
+    println("type 'x'");
+    status_text("One shot");
+  }
+  isPressedCh2Button = !isPressedCh2Button;
+    ((Toggle)cp5.getController("on2/off2")).setState(false);
+       messageBoxResult = -1;
+}
+
+public void Bulb_on() { //Bulb shot start
+  if(connectedSerial){
+    serial.write('w');
+    println("type 'w'");
+    status_text("Bulb shot on");
+  }
+  isPressedCh2Button = !isPressedCh2Button;
+  ((Toggle)cp5.getController("on2/off2")).setState(true);
+     messageBoxResult = -1;
+}
+public void Bulb_off() { //Bulb shot stop
+  if(connectedSerial){
+    serial.write('s');
+    println("type 's'");
+    status_text("Bulb shot off");
+  }
+  isPressedCh2Button = !isPressedCh2Button;
+  ((Toggle)cp5.getController("on2/off2")).setState(false);
+     messageBoxResult = -1;
+}
+
 
 
 public void ch3_on() {
@@ -98,7 +113,7 @@ public void ch4_on() {
 }
 
 public void ch4_off() {
-  createModalDialog("Ch4 off");
+  createModalDialog("Are you sure to turn CCD Power off?");
    if (messageBoxResult >= 1)
     return;
   if (connectedSerial) {
@@ -121,7 +136,7 @@ public void ch5_on() {
 }
 
 public void ch5_off() {
-  createModalDialog("Ch5 off");
+  createModalDialog("Are you sure to turn Motor focuser Power off?");
   if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     serial.write('g'); println("type 'g'");

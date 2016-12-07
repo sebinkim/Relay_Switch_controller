@@ -244,38 +244,6 @@ void createModalDialog(String message) {
     messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
 }
 
-public void One_shot() { //One shot
-  if(connectedSerial){
-    serial.write('x');
-    println("type 'x'");
-    status_text("One shot");
-  }
-  isPressedCh2Button = !isPressedCh2Button;
-    ((Toggle)cp5.getController("on2/off2")).setState(false);
-       messageBoxResult = -1;
-}
-
-public void Bulb_on() { //Bulb shot start
-  if(connectedSerial){
-    serial.write('w');
-    println("type 'w'");
-    status_text("Bulb shot on");
-  }
-  isPressedCh2Button = !isPressedCh2Button;
-  ((Toggle)cp5.getController("on2/off2")).setState(true);
-     messageBoxResult = -1;
-}
-public void Bulb_off() { //Bulb shot stop
-  if(connectedSerial){
-    serial.write('s');
-    println("type 's'");
-    status_text("Bulb shot off");
-  }
-  isPressedCh2Button = !isPressedCh2Button;
-  ((Toggle)cp5.getController("on2/off2")).setState(true);
-     messageBoxResult = -1;
-}
-
 
 /*
 public void auto_on() {
