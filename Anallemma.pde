@@ -95,10 +95,10 @@ void setup()
   if (useDropDownLists)
   {
     /* Drop down lists */
-    COMports = cp5.addDropdownList("COMPort", 20, 70, 100, 200); // Make a dropdown list with all comports
+    COMports = cp5.addDropdownList("COMPort_dropdown", 20, 70, 100, 200); // Make a dropdown list with all comports
     customize(COMports); // Setup the dropdownlist by using a function
 
-    baudrate = cp5.addDropdownList("Baudrate", 120, 70, 55, 200); // Make a dropdown with all the available baudrates   
+    baudrate = cp5.addDropdownList("Baudrate_dropdown", 120, 70, 55, 200); // Make a dropdown with all the available baudrates   
     customize(baudrate); // Setup the dropdownlist by using a function
 
     ROpen_HH = cp5.addDropdownList("ROpen_dropdown", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
@@ -168,13 +168,13 @@ void customize(DropdownList ddl)
   ddl.getCaptionLabel().getStyle().marginLeft = 3;//Set the left margin of the lable.  
   ddl.getCaptionLabel().getStyle().marginTop = 3;//Set the top margin of the value selected.
 
-  if (ddl.getName() == "Baudrate")
+  if (ddl.getName() == "Baudrate_dropdown")
   {
     ddl.getCaptionLabel().set("Baudrate");
     for (int i=0; i<baudrates.length; i++)
       ddl.addItem(baudrates[i], i); // give each item a value
   }
-  else if (ddl.getName() == "COMPort")
+  else if (ddl.getName() == "COMPort_dropdown")
   {
     ddl.getCaptionLabel().set("Select COM port");//Set the lable of the bar when nothing is selected.
     //Now well add the ports to the list, we use a for loop for that.
@@ -196,10 +196,12 @@ void controlEvent(ControlEvent theEvent) {
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
   } 
   else if (theEvent.isController()) {
-    if (theEvent.getName() == "COMPort")
-          portNumber = int(theEvent.getController().getValue());
-    else if(theEvent.getName() == "Baudrate")
-          selectedBaudrate = int(theEvent.getController().getValue());
+    if (theEvent.getName() == "COMPort_dropdown")
+      portNumber = int(theEvent.getController().getValue());
+    else if(theEvent.getName() == "Baudrate_dropdown")
+      selectedBaudrate = int(theEvent.getController().getValue());
+    else if(theEvent.getName() == "ROpen_dropdown")
+      selectedOH = int(theEvent.getController().getValue());
   }
 }
 

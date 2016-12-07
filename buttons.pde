@@ -3,12 +3,10 @@ void set_buttons(){
   cp5.addButton("ch1_on")
     .setPosition(ch_button_x0+ch_button_w*0,ch_button_y0)
     .setSize(80,20)
-    //.setVisible(!isCh1)
     ;
   cp5.addButton("ch1_off")
     .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0)
     .setSize(80,20)
-    //.setVisible(isCh1)
     ;
   cp5.addToggle("on1/off1")
     .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0)
