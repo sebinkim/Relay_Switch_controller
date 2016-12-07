@@ -15,6 +15,7 @@ public void ch1_on() {
     status_text("Ch1 on");
   }
   isPressedCh1Button = !isPressedCh1Button;
+  ((Toggle)cp5.getController("on1/off1")).setState(true);
   messageBoxResult = -1;
   isCh1 = true;
   ((Toggle)cp5.getController("on/off1")).setState(false);
@@ -30,6 +31,7 @@ public void ch1_off() {
     status_text("Ch1 off");
   }
   isPressedCh1Button = !isPressedCh1Button;
+  ((Toggle)cp5.getController("on1/off1")).setState(false);
   messageBoxResult = -1;
   isCh1 = false;
   ((Toggle)cp5.getController("on/off1")).setState(true);
@@ -44,6 +46,7 @@ public void ch2_on() {
     status_text("Ch2 on");
   }
   isPressedCh2Button = !isPressedCh2Button;
+  ((Toggle)cp5.getController("on2/off2")).setState(true);
   messageBoxResult = -1;
 }
 
@@ -56,6 +59,7 @@ public void ch2_off() {
     status_text("Ch2 off");
   }
   isPressedCh2Button = !isPressedCh2Button;
+  ((Toggle)cp5.getController("on2/off2")).setState(false);
   messageBoxResult = -1;
 }   
 */
@@ -67,6 +71,7 @@ public void ch3_on() {
     status_text("Ch3 on");
   }
   isPressedCh3Button = !isPressedCh3Button;
+  ((Toggle)cp5.getController("on3/off3")).setState(true);
   messageBoxResult = -1;
 }
 
@@ -78,6 +83,7 @@ public void ch3_off() {
     status_text("Ch3 off");
   }
   isPressedCh3Button = !isPressedCh3Button;
+  ((Toggle)cp5.getController("on3/off3")).setState(false);
   messageBoxResult = -1;
 }
 
@@ -87,6 +93,7 @@ public void ch4_on() {
     status_text("Ch4 on");
   }
   isPressedCh4Button = !isPressedCh4Button;
+  ((Toggle)cp5.getController("on4/off4")).setState(true);
   messageBoxResult = -1;
 }
 
@@ -99,6 +106,7 @@ public void ch4_off() {
     status_text("Ch4 off");
   }
   isPressedCh4Button = !isPressedCh4Button;
+  ((Toggle)cp5.getController("on4/off4")).setState(false);
   messageBoxResult = -1;
 }
 
@@ -108,6 +116,7 @@ public void ch5_on() {
     status_text("Ch5 on");
   }
   isPressedCh5Button = !isPressedCh5Button;
+  ((Toggle)cp5.getController("on5/off5")).setState(true);
   messageBoxResult = -1;
 }
 
@@ -119,6 +128,7 @@ public void ch5_off() {
     status_text("Ch5 off");
   }
   isPressedCh5Button = !isPressedCh5Button;
+  ((Toggle)cp5.getController("on5/off5")).setState(false);
   messageBoxResult = -1;
 }
 public void ch6_on() {
