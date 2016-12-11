@@ -5,6 +5,13 @@ Serial port;
 
 ControlP5 cp5;
 
+int ROpen_hh = 11 ;
+int ROpen_mm= 00 ;
+int ROpen_ss = 03 ;
+int RClose_hh = 14 ;
+int RClose_mm= 00 ;
+int RClose_ss = 03 ;
+
 Textfield P;
 Textfield I;
 Textfield D;
@@ -21,17 +28,8 @@ boolean useDropDownLists = true; // Set if you want to use the dropdownlist or n
 byte defaultComPort = 0;
 int defaultBaudrate = 115200;
 
-int ROpen_hh = 11 ;
-int ROpen_mm= 00 ;
-int ROpen_ss = 03 ;
-int RClose_hh = 12 ;
-int RClose_mm= 00 ;
-int RClose_ss = 03 ;
-
 //Dialog
 int messageBoxResult = -1;
-
-
 
 //Dropdown lists
 DropdownList COMports; // Define the variable ports as a Dropdownlist.
@@ -333,7 +331,7 @@ void beattime(int hh, int mm, int ss){
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
-      if (isPressedCh22Button == true){        
+      if (isPressedCh22Button == true && isPressedCh1Button == true && isPressedCh6Button == true){        
         One_shot();
         println(ss);
         }
