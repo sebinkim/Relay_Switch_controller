@@ -57,9 +57,10 @@ boolean isPressedCh2Button = false;
 boolean isPressedCh3Button = false;
 boolean isPressedCh4Button = false;
 boolean isPressedCh5Button = false;
-//boolean isPressedCh6Button = false;
-//boolean isPressedCh7Button = false;
-//boolean isPressedCh8Button = false;
+boolean isPressedCh6Button = false;
+boolean isPressedCh7Button = false;
+boolean isPressedCh8Button = false;
+boolean isPressedCh22Button = false;
 boolean isPressedautoButton = false;
 
 // schduling
@@ -324,16 +325,18 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true) {
       ch6_on_on(); //open
     }
-    if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss ) {
+    if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button == true) {
       ch7_on_on();  //close
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
+      if (isPressedCh22Button == true){        
         One_shot();
         println(ss);
+        }
       }
     } else if (!isPressedautoButton) {
     

@@ -165,7 +165,7 @@ public void res6_on() {
     println("type 'Res6 on'");
     status_text("Res6 on");
   }
-  isPressedCh5Button = !isPressedCh5Button;
+  isPressedCh6Button = !isPressedCh6Button;
   ((Toggle)cp5.getController("on6/off6")).setState(true);
   messageBoxResult = -1;
 }
@@ -177,7 +177,7 @@ public void res6_off() {
     println("type 'Res6 off'");
     status_text("Res6 off");
   }
-  isPressedCh5Button = !isPressedCh5Button;
+  isPressedCh6Button = !isPressedCh6Button;
   ((Toggle)cp5.getController("on6/off6")).setState(false);
   messageBoxResult = -1;
 }
@@ -194,6 +194,51 @@ public void ch7_on_on() {
     serial.write('u'); println("type 'u'"); delay(100);serial.write('u'); println("type 'u'");
     status_text("Roop Close");
   }
+}
+
+public void res7_on() {
+  if (connectedSerial) {
+    println("type 'Res7 on'");
+    status_text("Res7 on");
+  }
+  isPressedCh7Button = !isPressedCh7Button;
+  ((Toggle)cp5.getController("on7/off7")).setState(true);
+  messageBoxResult = -1;
+}
+
+public void res7_off() {
+  createModalDialog("Are you sure?");
+  if (messageBoxResult >= 1) return;
+  if (connectedSerial) {
+    println("type 'Res7 off'");
+    status_text("Res7 off");
+  }
+  isPressedCh7Button = !isPressedCh7Button;
+  ((Toggle)cp5.getController("on7/off7")).setState(false);
+  messageBoxResult = -1;
+}
+
+
+public void res2_on() {
+  if (connectedSerial) {
+    println("type 'Res2 on'");
+    status_text("Res2 on");
+  }
+  isPressedCh22Button = !isPressedCh22Button;
+  ((Toggle)cp5.getController("on22/off22")).setState(true);
+  messageBoxResult = -1;
+}
+
+public void res2_off() {
+  createModalDialog("Are you sure?");
+  if (messageBoxResult >= 1) return;
+  if (connectedSerial) {
+    println("type 'Res2 off'");
+    status_text("Res2 off");
+  }
+  isPressedCh22Button = !isPressedCh22Button;
+  ((Toggle)cp5.getController("on22/off22")).setState(false);
+  messageBoxResult = -1;
 }
 
 public void ch8_on() {

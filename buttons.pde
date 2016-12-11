@@ -86,7 +86,15 @@ void set_buttons(){
     .setSize(70,20)
     ;
 
-  
+  cp5.addButton("res6_on")
+    .setPosition(ch_button_x0+ch_button_w*4+30,ch_button_y0+ch_button_h*0)
+    .setSize(55,20)
+    ;
+  cp5.addButton("res6_off")
+    .setPosition(ch_button_x0+ch_button_w*5,ch_button_y0+ch_button_h*0)
+    .setSize(55,20)
+    ;
+    
   cp5.addToggle("on6/off6")
     .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*0+30)
     .setSize(50,20)
@@ -99,6 +107,16 @@ void set_buttons(){
     .setPosition(ch_button_x0+210+ch_button_w*1,ch_button_y0+ch_button_h*1-5)
     .setSize(70,20)
     ;
+
+cp5.addButton("res7_on")
+    .setPosition(ch_button_x0+ch_button_w*4+30,ch_button_y0+ch_button_h*1-5)
+    .setSize(55,20)
+    ;
+  cp5.addButton("res7_off")
+    .setPosition(ch_button_x0+ch_button_w*5,ch_button_y0+ch_button_h*1-5)
+    .setSize(55,20)
+    ;
+  
 
   cp5.addToggle("on7/off7")
         .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*1+25)
@@ -126,21 +144,40 @@ void set_buttons(){
     ;
 */
   cp5.addButton("auto_on")
-    .setPosition(ch_button_x0+260+ch_button_w*0,ch_button_y0+ch_button_h*3)
+    .setPosition(ch_button_x0+260+ch_button_w*0,ch_button_y0+ch_button_h*4)
     .setSize(80,20)
     ;
   cp5.addButton("auto_off")
-    .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*3)
+    .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*4)
     .setSize(80,20)
     ;
   cp5.addToggle("on_auto/off_auto")
-    .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*3)
+    .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*4)
     .setSize(50,20)
     .setValue(false)
     .setMode(ControlP5.SWITCH)
     .lock()
     ;  
   set_button_texts();
+  
+
+cp5.addButton("res2_on")
+    .setPosition(ch_button_x0+ch_button_w*4+30,ch_button_y0+ch_button_h*3-25)
+    .setSize(55,20)
+    ;
+  cp5.addButton("res2_off")
+    .setPosition(ch_button_x0+ch_button_w*5,ch_button_y0+ch_button_h*3-25)
+    .setSize(55,20)
+    ;
+    cp5.addToggle("on22/off22")
+        .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*3+5)
+    .setSize(50,20)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    .lock()
+    ;
+ 
+  
 }
 void set_button_texts(){
   textSize(14);
@@ -152,5 +189,7 @@ void set_button_texts(){
   text("Open", 275+ch_button_w*0, ch_button_y0+ch_button_h*0+15);
   text("Close", 275+ch_button_w*0, ch_button_y0+ch_button_h*1+10);
   text("Stop", 275+ch_button_w*0, ch_button_y0+ch_button_h*2+5);
-  text("Anallemma Automation", 272+ch_button_w*0, ch_button_y0+ch_button_h*3-10);
+  text("Auto Shutter", 272+ch_button_w*0, ch_button_y0+ch_button_h*3-10);
+  text("every 15 sec", 300+ch_button_w*0, ch_button_y0+ch_button_h*3+25);
+  text("Anallemma Automation", 272+ch_button_w*0, ch_button_y0+ch_button_h*4-10);
 }
