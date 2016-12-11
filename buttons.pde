@@ -82,42 +82,35 @@ void set_buttons(){
     .lock()
     ;
   cp5.addButton("ch6_on")
-    .setPosition(ch_button_x0+250+ch_button_w*0,ch_button_y0+ch_button_h*0+22)
-    .setSize(80,20)
+    .setPosition(ch_button_x0+210+ch_button_w*1,ch_button_y0+ch_button_h*0)
+    .setSize(70,20)
     ;
-/* 
-  cp5.addButton("ch6_off")
-    .setPosition(ch_button_x0+ch_button_w*1,ch_button_y0+ch_button_h*4)
-    .setSize(80,20)
-    ;
+
+  
   cp5.addToggle("on6/off6")
-    .setPosition(ch_button_x0+ch_button_w*2,ch_button_y0+ch_button_h*4)
+    .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*0+30)
     .setSize(50,20)
     .setValue(false)
     .setMode(ControlP5.SWITCH)
     .lock()
     ;
-*/
+
   cp5.addButton("ch7_on")
-    .setPosition(ch_button_x0+250+ch_button_w*1,ch_button_y0+ch_button_h*0+22)
-    .setSize(80,20)
+    .setPosition(ch_button_x0+210+ch_button_w*1,ch_button_y0+ch_button_h*1-5)
+    .setSize(70,20)
     ;
-/*
-  cp5.addButton("ch7_off")
-    .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*1)
-    .setSize(80,20)
-    ;
+
   cp5.addToggle("on7/off7")
-    .setPosition(ch_button_x0+260+ch_button_w*2,ch_button_y0+ch_button_h*1)
+        .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*1+25)
     .setSize(50,20)
     .setValue(false)
     .setMode(ControlP5.SWITCH)
     .lock()
     ;
-*/
+
   cp5.addButton("ch8_on")
-    .setPosition(ch_button_x0+250+ch_button_w*2,ch_button_y0+ch_button_h*0+22)
-    .setSize(80,20)
+    .setPosition(ch_button_x0+210+ch_button_w*1,ch_button_y0+ch_button_h*2-10)
+    .setSize(70,20)
     ;
 /*
   cp5.addButton("ch8_off")
@@ -151,13 +144,13 @@ void set_buttons(){
 }
 void set_button_texts(){
   textSize(14);
-  text("Anallemma Camera Power control", 20, ch_button_y0+ch_button_h*0-10);
+  text("Anallemma Camera Power", 20, ch_button_y0+ch_button_h*0-10);
   text("Anallemma Camera Shutter", 20, ch_button_y0+ch_button_h*1-10);
   text("Astronomical CCD Power control", 20, ch_button_y0+ch_button_h*3-10);
   text("Motor focuser Power control", 20, ch_button_y0+ch_button_h*4-10);
   text("Roof control", 272+ch_button_w*0, ch_button_y0+ch_button_h*0-10);
-  text("Open", 290+ch_button_w*0, ch_button_y0+ch_button_h*0+15);
-  text("Close", 290+ch_button_w*1, ch_button_y0+ch_button_h*0+15);
-  text("Stop", 290+ch_button_w*2, ch_button_y0+ch_button_h*0+15);
+  text("Open", 275+ch_button_w*0, ch_button_y0+ch_button_h*0+15);
+  text("Close", 275+ch_button_w*0, ch_button_y0+ch_button_h*1+10);
+  text("Stop", 275+ch_button_w*0, ch_button_y0+ch_button_h*2+5);
   text("Anallemma Automation", 272+ch_button_w*0, ch_button_y0+ch_button_h*3-10);
 }

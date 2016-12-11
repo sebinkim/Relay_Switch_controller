@@ -182,8 +182,8 @@ void customize(DropdownList ddl)
       ddl.addItem(serial.list()[i], i);//This is the line doing the actual adding of items, we use the current loop we are in to determin what place in the char array to access and what item number to add it as.
   }
   else if (ddl.getName() == "ROpen_dropdown"){
-    ddl.getCaptionLabel().set("Select roof open time");
-    for (int i=0; i<OH.length; i++){
+     ddl.getCaptionLabel().set("Select roof open time");
+     for (int i=0; i<OH.length; i++){
       ddl.addItem(OH[i],i);
     }
   }
@@ -314,14 +314,14 @@ void beattime(int hh, int mm, int ss){
   textSize(13);
   text("Com Clock        " + hh + " : " + mm + " : " + ss, 285, 85);
   fill(255);
-  rect(275,95,180,20);
-  rect(275,120,180,20);
+  rect(280,ch_button_y0+ch_button_h*0+30,120,20);
+  rect(280,ch_button_y0+ch_button_h*1+25,120,20);
   fill(0);
   textFont(f,20);
   textAlign(LEFT);
   textSize(13);
-  text("Roof Open time    " + ROpen_hh  + " : " + ROpen_mm  + " : " + ROpen_ss,  285, 110);
-  text("Roof Close time   " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 285, 135);
+  text("Set    " + ROpen_hh  + " : " + ROpen_mm  + " : " + ROpen_ss,  295, ch_button_y0+ch_button_h*0+45);
+  text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {

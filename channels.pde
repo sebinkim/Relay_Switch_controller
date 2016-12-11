@@ -160,6 +160,28 @@ public void ch6_on_on() {
   }
 }
 
+public void res6_on() {
+  if (connectedSerial) {
+    println("type 'Res6 on'");
+    status_text("Res6 on");
+  }
+  isPressedCh5Button = !isPressedCh5Button;
+  ((Toggle)cp5.getController("on6/off6")).setState(true);
+  messageBoxResult = -1;
+}
+
+public void res6_off() {
+  createModalDialog("Are you sure?");
+  if (messageBoxResult >= 1) return;
+  if (connectedSerial) {
+    println("type 'Res6 off'");
+    status_text("Res6 off");
+  }
+  isPressedCh5Button = !isPressedCh5Button;
+  ((Toggle)cp5.getController("on6/off6")).setState(false);
+  messageBoxResult = -1;
+}
+
 public void ch7_on() {
   createModalDialog("Are you sure to close roof?");
   if (connectedSerial) {
@@ -180,6 +202,7 @@ public void ch8_on() {
     status_text("Roof stop");
   }
 }
+
 
 void status_text(String status_message){
   fill(255);
