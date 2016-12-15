@@ -6,11 +6,11 @@ Serial port;
 ControlP5 cp5;
 
 int ROpen_hh = 11 ;
-int ROpen_mm= 00 ;
-int ROpen_ss = 03 ;
+int ROpen_mm = 0 ;
+int ROpen_ss = 3 ;
 int RClose_hh = 14 ;
-int RClose_mm= 00 ;
-int RClose_ss = 03 ;
+int RClose_mm = 0 ;
+int RClose_ss = 3 ;
 
 Textfield P;
 Textfield I;
@@ -324,10 +324,10 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedroofButton == true) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedroofButton == false) {
       ch6_on_on(); //open
     }
-    if (RClose_hh==hh-3 && RClose_mm == mm && RClose_ss == ss && isPressedroofButton == true) {
+    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedroofButton == true) {
       ch7_on_on();  //close
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
