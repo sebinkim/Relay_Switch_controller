@@ -95,8 +95,16 @@ void set_buttons(){
     .setSize(55,20)
     ;
     
-  cp5.addToggle("on6/off6")
-    .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*0+30)
+    cp5.addToggle("on6/off6")
+        .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*0+25)
+    .setSize(50,20)
+    .setValue(false)
+    .setMode(ControlP5.SWITCH)
+    .lock()
+    ;
+    
+  cp5.addToggle("opend/closed")
+    .setPosition(ch_button_x0+200+ch_button_w*2,ch_button_y0+ch_button_h*0-40)
     .setSize(50,20)
     .setValue(false)
     .setMode(ControlP5.SWITCH)
@@ -117,7 +125,6 @@ cp5.addButton("res7_on")
     .setSize(55,20)
     ;
   
-
   cp5.addToggle("on7/off7")
         .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*1+25)
     .setSize(50,20)
@@ -131,7 +138,8 @@ cp5.addButton("res7_on")
     .setSize(70,20)
     ;
 /*
-  cp5.addButton("ch8_off")
+  
+ cp5.addButton("ch8_off")
     .setPosition(ch_button_x0+260+ch_button_w*1,ch_button_y0+ch_button_h*2)
     .setSize(80,20)
     ;

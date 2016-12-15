@@ -148,16 +148,23 @@ public void ch5_off() {
 }
 public void ch6_on() {
   createModalDialog("Are you sure to open roof?");
+  if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     serial.write('y'); println("type 'y'");
     status_text("Roof open");
   }
+  isPressedroofButton = !isPressedroofButton;
+  ((Toggle)cp5.getController("opend/closed")).setState(true);
+  messageBoxResult = -1;
 }
 public void ch6_on_on() {
   if (connectedSerial) {
     serial.write('y'); println("type 'y'"); delay(100);serial.write('y'); println("type 'y'");
     status_text("Roop Open");
   }
+  isPressedroofButton = !isPressedroofButton;
+  ((Toggle)cp5.getController("opend/closed")).setState(true);
+  messageBoxResult = -1;
 }
 
 public void res6_on() {
@@ -188,12 +195,18 @@ public void ch7_on() {
     serial.write('u'); println("type 'u'");
     status_text("Roof close");
   }
+  isPressedroofButton = !isPressedroofButton;
+  ((Toggle)cp5.getController("opend/closed")).setState(false);
+  messageBoxResult = -1;
 }
 public void ch7_on_on() {
   if (connectedSerial) {
     serial.write('u'); println("type 'u'"); delay(100);serial.write('u'); println("type 'u'");
     status_text("Roop Close");
   }
+  isPressedroofButton = !isPressedroofButton;
+  ((Toggle)cp5.getController("opend/closed")).setState(false);
+  messageBoxResult = -1;
 }
 
 public void res7_on() {
