@@ -8,7 +8,7 @@ ControlP5 cp5;
 int ROpen_hh = 11 ;
 int ROpen_mm = 0 ;
 int ROpen_ss = 3 ;
-int RClose_hh = 6 ;
+int RClose_hh = 14 ;
 int RClose_mm = 0 ;
 int RClose_ss = 3 ;
 
@@ -322,9 +322,11 @@ void beattime(int hh, int mm, int ss){
   if(connectedSerial){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button ==true && isPressedroofButton == false) {
       ch6_on_on(); //open
+      ch1_on(); // Camera On
     }
     if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button ==true && isPressedroofButton == true) {
       ch7_on_on();  //close
+      ((Toggle)cp5.getController("on6/off6")).setState(false);
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
