@@ -8,7 +8,7 @@ ControlP5 cp5;
 int ROpen_hh = 11 ;
 int ROpen_mm = 0 ;
 int ROpen_ss = 3 ;
-int RClose_hh = 14 ;
+int RClose_hh = 6 ;
 int RClose_mm = 0 ;
 int RClose_ss = 3 ;
 
@@ -71,10 +71,6 @@ int ch_button_y0 = 300 ;
 int ch_button_w = 90 ;
 int ch_button_h = 70 ;
 // schduling
-
-int start_hh = 23 ;
-int start_mm= 5 ;
-int start_ss = 00 ;
 
 void setup()
 {
@@ -324,15 +320,15 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedroofButton == false) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button ==true && isPressedroofButton == false) {
       ch6_on_on(); //open
     }
-    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedroofButton == true) {
+    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button ==true && isPressedroofButton == true) {
       ch7_on_on();  //close
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
-      if (isPressedCh22Button == true && isPressedCh1Button == true && isPressedroofButton == true){        
+      if (isPressedCh22Button == true && isPressedCh1Button == true && isPressedCh22Button ==true && isPressedroofButton == true){        
         One_shot();
         println(ss);
         }
