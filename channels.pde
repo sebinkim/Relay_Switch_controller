@@ -20,6 +20,16 @@ public void ch1_off() {
   messageBoxResult = -1;
 }
 
+public void ch1_off_off() {
+  if (connectedSerial) {
+    serial.write('a'); println("type 'a'");
+    status_text("Ch1 off");
+  }
+  isPressedCh1Button = !isPressedCh1Button;
+  ((Toggle)cp5.getController("on1/off1")).setState(false);
+  messageBoxResult = -1;
+}
+
 /* 
 public void ch2_on() { 
   if (connectedSerial) {
@@ -178,8 +188,6 @@ public void res6_on() {
 }
 
 public void res6_off() {
-  createModalDialog("Are you sure?");
-  if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     println("type 'Res6 off'");
     status_text("Res6 off");
@@ -220,8 +228,6 @@ public void res7_on() {
 }
 
 public void res7_off() {
-  createModalDialog("Are you sure?");
-  if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     println("type 'Res7 off'");
     status_text("Res7 off");
@@ -230,7 +236,6 @@ public void res7_off() {
   ((Toggle)cp5.getController("on7/off7")).setState(false);
   messageBoxResult = -1;
 }
-
 
 public void res2_on() {
   if (connectedSerial) {
@@ -243,8 +248,6 @@ public void res2_on() {
 }
 
 public void res2_off() {
-  createModalDialog("Are you sure?");
-  if (messageBoxResult >= 1) return;
   if (connectedSerial) {
     println("type 'Res2 off'");
     status_text("Res2 off");

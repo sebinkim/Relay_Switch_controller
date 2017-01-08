@@ -320,17 +320,18 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button ==true && isPressedroofButton == false) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button ==true) {
       ch6_on_on(); //open
       ch1_on(); // Camera On
     }
-    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button ==true && isPressedroofButton == true) {
+    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button ==true) {
       ch7_on_on();  //close
+      ch1_off_off();  //close
       ((Toggle)cp5.getController("on6/off6")).setState(false);
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){
-      if (isPressedCh22Button == true && isPressedCh1Button == true && isPressedCh22Button ==true && isPressedroofButton == true){        
+      if (isPressedCh1Button == true && isPressedCh22Button ==true && isPressedroofButton == true){        
         One_shot();
         println(ss);
         }
