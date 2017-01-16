@@ -5,11 +5,12 @@ Serial port;
 
 ControlP5 cp5;
 
-int ROpen_hh = 11 ;
-int ROpen_mm = 0 ;
+int ROpen_hh = 10 ;
+int ROpen_mm = 44 ;
 int ROpen_ss = 3 ;
-int RClose_hh = 14 ;
-int RClose_mm = 0 ;
+int CameraOn_ss = 7 ;
+int RClose_hh = 10;
+int RClose_mm = 45 ;
 int RClose_ss = 3 ;
 
 Textfield P;
@@ -320,14 +321,17 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button ==true) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true) {
       ch6_on_on(); //open
+      }
+    if (ROpen_hh == hh && ROpen_mm == mm && CameraOn_ss == ss && isPressedCh6Button == true) {
       ch1_on(); // Camera On
-    }
-    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button ==true) {
+      }
+    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss && isPressedCh7Button == true) {
       ch7_on_on();  //close
-      ch1_off_off();  //close
-      ((Toggle)cp5.getController("on6/off6")).setState(false);
+      ((Toggle)cp5.getController("on6/off6")).setState(false);  //open res off
+      ch1_off_off();  //Camera power off
+      ((Toggle)cp5.getController("on1/off1")).setState(false);  //camera power off
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       if(previous_ss != ss){

@@ -192,7 +192,7 @@ void set_button_texts(){
   text("Anallemma Camera Power", 20, ch_button_y0+ch_button_h*0-10);
   text("Anallemma Camera Shutter", 20, ch_button_y0+ch_button_h*1-10);
   text("Astronomical CCD Power control", 20, ch_button_y0+ch_button_h*3-10);
-  text("Motor focuser Power control", 20, ch_button_y0+ch_button_h*4-10);
+  text("Mount Motor Power control", 20, ch_button_y0+ch_button_h*4-10);
   text("Roof control", 272+ch_button_w*0, ch_button_y0+ch_button_h*0-10);
   text("Open", 275+ch_button_w*0, ch_button_y0+ch_button_h*0+15);
   text("Close", 275+ch_button_w*0, ch_button_y0+ch_button_h*1+10);

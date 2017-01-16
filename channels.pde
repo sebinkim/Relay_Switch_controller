@@ -169,7 +169,9 @@ public void ch6_on() {
 }
 public void ch6_on_on() {
   if (connectedSerial) {
-    serial.write('y'); println("type 'y'"); delay(100);serial.write('y'); println("type 'y'");
+    serial.write('y'); println("type 'y'"); 
+     delay(50);
+    serial.write('y'); println("type 'y'");
     status_text("Roop Open");
   }
   isPressedroofButton = !isPressedroofButton;
