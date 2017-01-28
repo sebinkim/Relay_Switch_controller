@@ -41,12 +41,13 @@ int selectedBaudrate = -1; // Used to indicate which baudrate has been selected
 String[] baudrates = {
   "1200", "2400", "4800", "9600", "19200", "38400", "57600", "115200" // these are the supported baudrates by a module
 };
-
+/*
 DropdownList ROpen_HH;
 int selectedOH = -1; // Used to indicate which baudrate has been selected
 String[] OH = {
   "00", "01", "02", "03", "04", "05" // Open Hour
 };
+*/
 
 boolean connectedSerial;
 boolean aborted;
@@ -101,8 +102,8 @@ void setup()
     baudrate = cp5.addDropdownList("Baudrate_dropdown", 120, 70, 55, 200); // Make a dropdown with all the available baudrates   
     customize(baudrate); // Setup the dropdownlist by using a function
 
-    ROpen_HH = cp5.addDropdownList("ROpen_dropdown", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
-    customize(ROpen_HH); // Setup the dropdownlist by using a function
+    //ROpen_HH = cp5.addDropdownList("ROpen_dropdown", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
+    //customize(ROpen_HH); // Setup the dropdownlist by using a function
 
     cp5.addButton("Connect", 0, 185, 70, 52, 15);
     cp5.addButton("Disconnect", 0, 185, 88, 52, 15);
@@ -181,12 +182,14 @@ void customize(DropdownList ddl)
     for (int i=0; i<serial.list().length; i++)    
       ddl.addItem(serial.list()[i], i);//This is the line doing the actual adding of items, we use the current loop we are in to determin what place in the char array to access and what item number to add it as.
   }
+  /*
   else if (ddl.getName() == "ROpen_dropdown"){
      ddl.getCaptionLabel().set("Select roof open time");
      for (int i=0; i<OH.length; i++){
       ddl.addItem(OH[i],i);
     }
   }
+    */
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
 }
@@ -200,8 +203,8 @@ void controlEvent(ControlEvent theEvent) {
       portNumber = int(theEvent.getController().getValue());
     else if(theEvent.getName() == "Baudrate_dropdown")
       selectedBaudrate = int(theEvent.getController().getValue());
-    else if(theEvent.getName() == "ROpen_dropdown")
-      selectedOH = int(theEvent.getController().getValue());
+    //else if(theEvent.getName() == "ROpen_dropdown")
+    //selectedOH = int(theEvent.getController().getValue());
   }
 }
 
@@ -324,17 +327,21 @@ void beattime(int hh, int mm, int ss){
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
   
   if(connectedSerial){
+    if(previous_ss != ss){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
-      ch6_on_on(); //open
+      ch6_on_on(); delay(50);//open
+      ch1_on(); delay(50);//Camera Power On
     }
-    if (RClose_hh==hh && RClose_mm == mm && RClose_ss == ss) {
-      ch7_on_on();  //close
+    if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss) {
+      ch7_on_on(); delay(50);  //close
+      res6_off(); delay(50); //
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
-      if(previous_ss != ss){
-      if (isPressedCh22Button == true && isPressedCh1Button == true && isPressedroofButton == true){        
-        One_shot();
-        println(ss);
+      //if(previous_ss != ss){
+        println();
+        println(hh+":"+mm+":"+ss); println("ch1 = " + isPressedCh1Button); println("roof = " + isPressedroofButton); println("Auto Shutter = " + isPressedCh22Button); 
+      if (isPressedCh22Button==true && isPressedCh1Button==true && isPressedroofButton==true){
+        One_shot(); println(hh+":"+mm+":"+ss + " One shot"); 
         }
       }
     } else if (!isPressedautoButton) {

@@ -168,23 +168,21 @@ cp5.addButton("res7_on")
     ;  
   set_button_texts();
   
-
 cp5.addButton("res2_on")
     .setPosition(ch_button_x0+ch_button_w*4+30,ch_button_y0+ch_button_h*3-25)
     .setSize(55,20)
     ;
-  cp5.addButton("res2_off")
+cp5.addButton("res2_off")
     .setPosition(ch_button_x0+ch_button_w*5,ch_button_y0+ch_button_h*3-25)
     .setSize(55,20)
     ;
-    cp5.addToggle("on22/off22")
+cp5.addToggle("on22/off22")
         .setPosition(ch_button_x0+230+ch_button_w*2,ch_button_y0+ch_button_h*3+5)
     .setSize(50,20)
     .setValue(false)
     .setMode(ControlP5.SWITCH)
     .lock()
     ;
- 
   
 }
 void set_button_texts(){
