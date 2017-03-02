@@ -328,11 +328,11 @@ void beattime(int hh, int mm, int ss){
   
   if(connectedSerial){
     if(previous_ss != ss){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss ) {
+    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true ) {
       ch6_on_on(); delay(50);//open
       ch1_on(); delay(50);//Camera Power On
     }
-    if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss) {
+    if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss && isPressedCh7Button == true) {
       ch7_on_on(); delay(50);  //close
       res6_off(); delay(50); //
   }
