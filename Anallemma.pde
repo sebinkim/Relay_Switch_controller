@@ -329,17 +329,26 @@ void beattime(int hh, int mm, int ss){
   if(connectedSerial){
     if(previous_ss != ss){
     if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true ) {
-      ch6_on_on(); delay(50);//open
-      ch1_on(); delay(50);//Camera Power On
+      ch1_on(); delay(30);//Camera Power On
+      ch6_on_on(); delay(30);//open
+//      ch1_on(); delay(30);//Camera Power On
+//      ch6_on_on(); delay(30);//open
     }
     if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss && isPressedCh7Button == true) {
-      ch7_on_on(); delay(50);  //close
-      res6_off(); delay(50); //
+      ch7_on_on(); delay(30);  //close
+      res6_off(); delay(30); //
+//      ch7_on_on(); delay(30);  //close
+//      res6_off(); delay(30); //
   }
     if (ss==0 || ss==15 || ss==30 || ss==45) {
       //if(previous_ss != ss){
         println();
-        println(hh+":"+mm+":"+ss); println("ch1 = " + isPressedCh1Button); println("roof = " + isPressedroofButton); println("Auto Shutter = " + isPressedCh22Button); 
+        println(hh+":"+mm+":"+ss); 
+        println("ch1 = " + isPressedCh1Button); 
+        println("roof status = " + isPressedroofButton); 
+        println("roof open reservation = " + isPressedCh6Button);
+        println("roof close reservation = " + isPressedCh7Button);
+        println("Auto Shutter = " + isPressedCh22Button); 
       if (isPressedCh22Button==true && isPressedCh1Button==true && isPressedroofButton==true){
         One_shot(); println(hh+":"+mm+":"+ss + " One shot"); 
         }

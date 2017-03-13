@@ -1,6 +1,7 @@
 public void ch1_on() {
   if (connectedSerial) {
-    serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(50); serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(50);
+    serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(30); 
+    serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(30);
     }
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(true);
@@ -11,8 +12,8 @@ public void ch1_off() {
   createModalDialog("Are you sure to turn Anallemma Camera Power off?");
   if (messageBoxResult >= 1) return;
   if (connectedSerial) {
-    serial.write('a'); println("type 'a'");
-    status_text("Ch1 off");
+    serial.write('a'); println("type 'a'");status_text("Ch1 off"); delay(30);
+    serial.write('a'); println("type 'a'");status_text("Ch1 off"); delay(30);
   }
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(false);
@@ -141,7 +142,8 @@ public void ch6_on() {
 }
 public void ch6_on_on() {
   if (connectedSerial) {
-    serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(50); serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(50);
+    serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(30); 
+    serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(30);
    }
   isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(true);
@@ -157,7 +159,7 @@ public void res6_on() {
 
 public void res6_off() {
   if (connectedSerial) {
-    println("type 'Res6 off'"); status_text("Res6 off");  delay(50);
+    println("type 'Res6 off'"); status_text("Res6 off");  delay(30);
   }
   isPressedCh6Button = !isPressedCh6Button;
   ((Toggle)cp5.getController("on6/off6")).setState(false);
@@ -175,7 +177,8 @@ public void ch7_on() {
 }
 public void ch7_on_on() {
   if (connectedSerial) {
-    serial.write('u'); println("type 'u'"); delay(50);serial.write('u'); println("type 'u'"); delay(50);
+    serial.write('u'); println("type 'u'"); delay(20);
+    serial.write('u'); println("type 'u'"); delay(20);
     status_text("Roop Close");
   }
   isPressedroofButton = !isPressedroofButton;
