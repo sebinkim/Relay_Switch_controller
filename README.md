@@ -1,4 +1,6 @@
 # Anallemma
 
+#libraries folder
+#My Documents\processing\libraries
 
-https://twitter.com/GS_Pleiades
+#https://twitter.com/GS_Pleiades
