@@ -1,6 +1,14 @@
 import processing.serial.*;  
 import controlP5.*;
 import javax.swing.*;
+import twitter4j.conf.*;
+import twitter4j.*;
+import twitter4j.auth.*;
+import twitter4j.api.*;
+import java.util.*;
+
+Twitter twitter;
+
 Serial port;
 
 ControlP5 cp5;
@@ -43,11 +51,11 @@ String[] baudrates = {
 };
 /*
 DropdownList ROpen_HH;
-int selectedOH = -1; // Used to indicate which baudrate has been selected
-String[] OH = {
-  "00", "01", "02", "03", "04", "05" // Open Hour
-};
-*/
+ int selectedOH = -1; // Used to indicate which baudrate has been selected
+ String[] OH = {
+ "00", "01", "02", "03", "04", "05" // Open Hour
+ };
+ */
 
 boolean connectedSerial;
 boolean aborted;
@@ -78,6 +86,7 @@ int start_mm= 5 ;
 int start_ss = 00 ;
 
 void setup()
+
 {
   try { 
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -85,14 +94,14 @@ void setup()
   catch (Exception e) { 
     e.printStackTrace();
   } 
-  
+
   cp5 = new ControlP5(this);
   size(550, 650);
 
   f = loadFont("Arial-BoldMT-30.vlw");
   textFont(f, 30);
-  
- //println(serial.list()); // Used for debugging
+
+  //println(serial.list()); // Used for debugging
   if (useDropDownLists)
   {
     /* Drop down lists */
@@ -107,8 +116,7 @@ void setup()
 
     cp5.addButton("Connect", 0, 185, 70, 52, 15);
     cp5.addButton("Disconnect", 0, 185, 88, 52, 15);
-  }
-  else // if useDropDownLists is false, it will connect automatically at startup
+  } else // if useDropDownLists is false, it will connect automatically at startup
   {
     serial = new Serial(this, Serial.list()[defaultComPort], defaultBaudrate);
     serial.bufferUntil('\n');
@@ -118,6 +126,18 @@ void setup()
   background(0);
   set_buttons();
 }
+//added for twitter
+{
+  ConfigurationBuilder cb = new ConfigurationBuilder();
+  cb.setOAuthConsumerKey("AzvQgqGxCzzyUk78wg3q9TEcO");
+  cb.setOAuthConsumerSecret("rNHgvgXtA13lRRizXne3PAPIPgZWJjWDww5AOr7X5DCEklIzNw");
+  cb.setOAuthAccessToken("848078166883053568-mqymPaAQASoAjGsZnNNO0sEixHCo0sN");
+  cb.setOAuthAccessTokenSecret("v88Qd5Gq5LKZuXut0QhMdFa2aRpxB9L3ZxDInrN3duLbB");
+
+  TwitterFactory tf = new TwitterFactory(cb.build());
+
+  twitter = tf.getInstance();
+}
 
 
 void Abort(int theValue)
@@ -126,8 +146,7 @@ void Abort(int theValue)
   {
     serial.write("A;");
     aborted = true;
-  }
-  else
+  } else
     println("Establish a serial connection first!");
 }
 void Continue(int theValue)
@@ -137,27 +156,24 @@ void Continue(int theValue)
     serial.write("C;");
     aborted = false;
     background(100);
-  }
-  else
+  } else
     println("Establish a serial connection first!");
 }
 void Submit(int theValue) 
 {
   if (connectedSerial)
   {    
-      delay(10);    
-  }
-  else
+    delay(10);
+  } else
     println("Establish a serial connection first!");
 }
 
 void serialEvent(Serial serial)
 {
-  
 }
+
 void keyPressed() 
 {
-  
 }
 void customize(DropdownList ddl) 
 {
@@ -174,8 +190,7 @@ void customize(DropdownList ddl)
     ddl.getCaptionLabel().set("Baudrate");
     for (int i=0; i<baudrates.length; i++)
       ddl.addItem(baudrates[i], i); // give each item a value
-  }
-  else if (ddl.getName() == "COMPort_dropdown")
+  } else if (ddl.getName() == "COMPort_dropdown")
   {
     ddl.getCaptionLabel().set("Select COM port");//Set the lable of the bar when nothing is selected.
     //Now well add the ports to the list, we use a for loop for that.
@@ -184,12 +199,12 @@ void customize(DropdownList ddl)
   }
   /*
   else if (ddl.getName() == "ROpen_dropdown"){
-     ddl.getCaptionLabel().set("Select roof open time");
-     for (int i=0; i<OH.length; i++){
-      ddl.addItem(OH[i],i);
-    }
-  }
-    */
+   ddl.getCaptionLabel().set("Select roof open time");
+   for (int i=0; i<OH.length; i++){
+   ddl.addItem(OH[i],i);
+   }
+   }
+   */
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
 }
@@ -197,11 +212,10 @@ void customize(DropdownList ddl)
 void controlEvent(ControlEvent theEvent) {
   if (theEvent.isGroup()) {
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
-  } 
-  else if (theEvent.isController()) {
+  } else if (theEvent.isController()) {
     if (theEvent.getName() == "COMPort_dropdown")
       portNumber = int(theEvent.getController().getValue());
-    else if(theEvent.getName() == "Baudrate_dropdown")
+    else if (theEvent.getName() == "Baudrate_dropdown")
       selectedBaudrate = int(theEvent.getController().getValue());
     //else if(theEvent.getName() == "ROpen_dropdown")
     //selectedOH = int(theEvent.getController().getValue());
@@ -215,17 +229,16 @@ void Connect(int theValue)
   {
     println("ConnectSerial");
     background(100);
-    fill(255,255,255);
+    fill(255, 255, 255);
     textAlign(LEFT);
     text("Serial connected", 20, 60);
-    
+
     set_button_texts();
     serial = new Serial(this, Serial.list()[portNumber], Integer.parseInt(baudrates[selectedBaudrate]));
     connectedSerial = true;
     serial.bufferUntil('\n');
     serial.write("G;"); // Go
-  }
-  else if (portNumber == -1)
+  } else if (portNumber == -1)
     println("Select COM Port first!");
   else if (selectedBaudrate == -1)
     println("Select baudrate first!");
@@ -242,63 +255,62 @@ void Disconnect(int theValue)
     connectedSerial = false;
     background(0); // background color change by Kevin
     set_button_texts();
-    fill(255,255,255);
+    fill(255, 255, 255);
     text("Serial disconnected", 80, 60);
     println("Serial disconnected");
-  }
-  else
+  } else
     println("Couldn't disconnect");
 }
 
 
 void createModalDialog(String message) {
-    messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
+  messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
 }
 
 
 /*
 public void auto_on() {
-int hh = hour();
-int mm= minute();
-int ss = second();
-
-int mms=millis();
-  if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )  
-        {
-        ch6_on();
-        }
-    if(isPressedautoButton && connectedSerial && start_hh==hh-3 && start_mm == mm && start_ss == ss )  
-       {
-        ch7_on();
-      }
-    if (isPressedautoButton && connectedSerial && (ss%15==0))
-    {
-      One_shot();
-  } else if (!isPressedautoButton && connectedSerial) {
-  
-  }
-  isPressedautoButton = !isPressedautoButton;
-    ((Toggle)cp5.getController("auto")).setState(true);
-       messageBoxResult = -1;
-}
-
-public void auto_off() {
-  createModalDialog("auto off");
-   if (messageBoxResult >= 1)
-    return;
-  if (isPressedautoButton && connectedSerial) {
-  } else if (!isPressedautoButton && connectedSerial) {
-  }
-  isPressedautoButton = !isPressedautoButton;
-    ((Toggle)cp5.getController("task")).setState(false);
-       messageBoxResult = -1;
-}
-*/
+ int hh = hour();
+ int mm= minute();
+ int ss = second();
+ 
+ int mms=millis();
+ if (isPressedautoButton && connectedSerial && start_hh==hh && start_mm==mm && start_ss==ss )  
+ {
+ ch6_on();
+ }
+ if(isPressedautoButton && connectedSerial && start_hh==hh-3 && start_mm == mm && start_ss == ss )  
+ {
+ ch7_on();
+ }
+ if (isPressedautoButton && connectedSerial && (ss%15==0))
+ {
+ One_shot();
+ } else if (!isPressedautoButton && connectedSerial) {
+ 
+ }
+ isPressedautoButton = !isPressedautoButton;
+ ((Toggle)cp5.getController("auto")).setState(true);
+ messageBoxResult = -1;
+ }
+ 
+ public void auto_off() {
+ createModalDialog("auto off");
+ if (messageBoxResult >= 1)
+ return;
+ if (isPressedautoButton && connectedSerial) {
+ } else if (!isPressedautoButton && connectedSerial) {
+ }
+ isPressedautoButton = !isPressedautoButton;
+ ((Toggle)cp5.getController("task")).setState(false);
+ messageBoxResult = -1;
+ }
+ */
 
 
 int previous_ss;
 
-void draw(){
+void draw() {
   int y = year();
   int m = month();
   int d = day();
@@ -308,40 +320,44 @@ void draw(){
   beattime(hh, mm, ss);
 }
 
-void beattime(int hh, int mm, int ss){
+void beattime(int hh, int mm, int ss) {
   fill(255);
-  rect(275,70,180,20);
+  rect(275, 70, 180, 20);
   fill(0);
-  textFont(f,20);
+  textFont(f, 20);
   textAlign(LEFT);
   textSize(13);
   text("Com Clock        " + hh + " : " + mm + " : " + ss, 285, 85);
   fill(255);
-  rect(280,ch_button_y0+ch_button_h*0+30,120,20);
-  rect(280,ch_button_y0+ch_button_h*1+25,120,20);
+  rect(280, ch_button_y0+ch_button_h*0+30, 120, 20);
+  rect(280, ch_button_y0+ch_button_h*1+25, 120, 20);
   fill(0);
-  textFont(f,20);
+  textFont(f, 20);
   textAlign(LEFT);
   textSize(13);
-  text("Set    " + ROpen_hh  + " : " + ROpen_mm  + " : " + ROpen_ss,  295, ch_button_y0+ch_button_h*0+45);
+  text("Set    " + ROpen_hh  + " : " + ROpen_mm  + " : " + ROpen_ss, 295, ch_button_y0+ch_button_h*0+45);
   text("Set    " + RClose_hh + " : " + RClose_mm + " : " + RClose_ss, 295, ch_button_y0+ch_button_h*1+40);
-  
-  if(connectedSerial){
-    if(previous_ss != ss){
-    if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true ) {
-      ch1_on(); delay(30);//Camera Power On
-      ch6_on_on(); delay(30);//open
-//      ch1_on(); delay(30);//Camera Power On
-//      ch6_on_on(); delay(30);//open
-    }
-    if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss && isPressedCh7Button == true) {
-      ch7_on_on(); delay(30);  //close
-      res6_off(); delay(30); //
-//      ch7_on_on(); delay(30);  //close
-//      res6_off(); delay(30); //
-  }
-    if (ss==0 || ss==15 || ss==30 || ss==45) {
-      //if(previous_ss != ss){
+
+  if (connectedSerial) {
+    if (previous_ss != ss) {
+      if (ROpen_hh==hh && ROpen_mm==mm && ROpen_ss==ss && isPressedCh6Button == true ) {
+        ch1_on(); 
+        delay(30);//Camera Power On
+        ch6_on_on(); 
+        delay(30);//open
+        //      ch1_on(); delay(30);//Camera Power On
+        //      ch6_on_on(); delay(30);//open
+      }
+      if (RClose_hh==hh && RClose_mm==mm && RClose_ss==ss && isPressedCh7Button == true) {
+        ch7_on_on(); 
+        delay(30);  //close
+        res6_off(); 
+        delay(30); //
+        //      ch7_on_on(); delay(30);  //close
+        //      res6_off(); delay(30); //
+      }
+      if (ss==0 || ss==15 || ss==30 || ss==45) {
+        //if(previous_ss != ss){
         println();
         println(hh+":"+mm+":"+ss); 
         println("ch1 = " + isPressedCh1Button); 
@@ -349,12 +365,12 @@ void beattime(int hh, int mm, int ss){
         println("roof open reservation = " + isPressedCh6Button);
         println("roof close reservation = " + isPressedCh7Button);
         println("Auto Shutter = " + isPressedCh22Button); 
-      if (isPressedCh22Button==true && isPressedCh1Button==true && isPressedroofButton==true){
-        One_shot(); println(hh+":"+mm+":"+ss + " One shot"); 
+        if (isPressedCh22Button==true && isPressedCh1Button==true && isPressedroofButton==true) {
+          One_shot(); 
+          println(hh+":"+mm+":"+ss + " One shot");
         }
       }
     } else if (!isPressedautoButton) {
-    
     }
   }
   previous_ss = ss;
