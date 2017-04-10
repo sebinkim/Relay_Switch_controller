@@ -14,7 +14,7 @@ Serial port;
 ControlP5 cp5;
 
 int ROpen_ho = 11 ;
-int ROpen_mi = 2 ;
+int ROpen_mi = 0 ;
 int ROpen_se = 3 ;
 int RClose_ho = 14 ;
 int RClose_mi = 0 ;
@@ -381,8 +381,10 @@ void twitter_send(String twitter_masaage) {
   
 try
     {
-      Status status = twitter.updateStatus(twitter_masaage);
-      System.out.println("Status updated to [" + status.getText() + "].");
+      String  twitter_masaage_time = twitter_masaage + year() + month() + day() + hour() + minute() + second();
+      Status status = twitter.updateStatus(twitter_masaage_time);
+      //Status status = twitter.updateStatus(twitter_masaage);
+      System.out.println("Status updated to [" + status.getText() + "]." );
     }
     catch (TwitterException te)
     {

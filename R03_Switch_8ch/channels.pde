@@ -174,12 +174,14 @@ twitter_send("The SRCROOF is opened autometically!! This is a tweet sent from SR
 
 public void res6_on() {
   if (connectedSerial) {
-    println("type 'Res6 on'"); 
-    status_text("Res6 on");  
+    println("type 'Res6 on'"); status_text("Res6 on");
+    twitter_send("The SRCROOF open reservation is on. !! This is a tweet sent from SRCROOF_R03!! ");
     delay(50);
   }
+  if (isPressedCh6Button == false) {
   isPressedCh6Button = !isPressedCh6Button;
   ((Toggle)cp5.getController("on6/off6")).setState(true);
+  }
 }
 
 public void res6_off() {
@@ -187,8 +189,10 @@ public void res6_off() {
     println("type 'Res6 off'"); status_text("Res6 off"); delay(30);
     twitter_send("The SRCROOF open reservation is off. !! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedCh6Button == true) {
   isPressedCh6Button = !isPressedCh6Button;
   ((Toggle)cp5.getController("on6/off6")).setState(false);
+  }
 }
 
 public void ch7_on() {
@@ -217,8 +221,10 @@ public void res7_on() {
     println("type 'Res7 on'"); status_text("Res7 on");
     twitter_send("The SRCROOF close reservation is on. !! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedCh7Button == false) {
   isPressedCh7Button = !isPressedCh7Button;
   ((Toggle)cp5.getController("on7/off7")).setState(true);
+  }
   messageBoxResult = -1;
 }
 
@@ -228,8 +234,10 @@ public void res7_off() {
     println("type 'Res7 off'"); status_text("Res7 off");
     twitter_send("The SRCROOF close reservation is off. !! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedCh7Button == true) {
   isPressedCh7Button = !isPressedCh7Button;
   ((Toggle)cp5.getController("on7/off7")).setState(false);
+  }
   messageBoxResult = -1;
 }
 
@@ -238,8 +246,10 @@ public void res2_on() {
     println("type 'Res2 on'"); status_text("Res2 on");
     twitter_send("The Anallemma auto shutter is on. !! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedCh22Button == false) {
   isPressedCh22Button = !isPressedCh22Button;
   ((Toggle)cp5.getController("on22/off22")).setState(true);
+  }
   messageBoxResult = -1;
 }
 
@@ -249,8 +259,10 @@ public void res2_off() {
     println("type 'Res2 off'");  status_text("Res2 off");
     twitter_send("The Anallemma auto shutter is off. !! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedCh22Button == true) {
   isPressedCh22Button = !isPressedCh22Button;
   ((Toggle)cp5.getController("on22/off22")).setState(false);
+  }
   messageBoxResult = -1;
 }
 
