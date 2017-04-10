@@ -9,7 +9,7 @@ import java.util.*;
 
 Date d = new Date();
 long timestamp = d.getTime();
-String datetime = new java.text.SimpleDateFormat("yyyyMMddhhmmss").format(timestamp); 
+String datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(timestamp); 
 
 Twitter twitter;
 
