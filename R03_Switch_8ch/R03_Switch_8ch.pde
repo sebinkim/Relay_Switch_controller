@@ -7,6 +7,10 @@ import twitter4j.auth.*;
 import twitter4j.api.*;
 import java.util.*;
 
+Date d = new Date();
+long timestamp = d.getTime();
+String datetime = new java.text.SimpleDateFormat("yyyyMMddhhmmss").format(timestamp); 
+
 Twitter twitter;
 
 Serial port;
@@ -381,7 +385,8 @@ void twitter_send(String twitter_masaage) {
   
 try
     {
-      String  twitter_masaage_time = twitter_masaage + year() + month() + day() + hour() + minute() + second();
+      //String  twitter_masaage_time = twitter_masaage + year() + month() + day() + hour() + minute() + second();
+      String  twitter_masaage_time = twitter_masaage + datetime;
       Status status = twitter.updateStatus(twitter_masaage_time);
       //Status status = twitter.updateStatus(twitter_masaage);
       System.out.println("Status updated to [" + status.getText() + "]." );
