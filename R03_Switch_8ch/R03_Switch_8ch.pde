@@ -7,10 +7,6 @@ import twitter4j.auth.*;
 import twitter4j.api.*;
 import java.util.*;
 
-Date d = new Date();
-long timestamp = d.getTime();
-String datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(timestamp); 
-
 Twitter twitter;
 
 Serial port;
@@ -311,7 +307,6 @@ public void auto_on() {
  }
  */
 
-
 int previous_ss;
 
 void draw() {
@@ -341,7 +336,11 @@ void beattime(int ho, int mi, int se) {
   textSize(13);
   text("Set    " + ROpen_ho  + " : " + ROpen_mi  + " : " + ROpen_se, 295, ch_button_y0+ch_button_h*0+45);
   text("Set    " + RClose_ho + " : " + RClose_mi + " : " + RClose_se, 295, ch_button_y0+ch_button_h*1+40);
-
+ 
+  Date d = new Date();
+  long timestamp = d.getTime();
+  String Now_datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(timestamp);
+  
   if (connectedSerial) {
     if (previous_ss != se) {
       if (ROpen_ho==ho && ROpen_mi==mi && ROpen_se==se && isPressedCh6Button == true ) {
@@ -362,8 +361,9 @@ void beattime(int ho, int mi, int se) {
       }
       if (se==0 || se==15 || se==30 || se==45) {
         //if(previous_ss != ss){
-        println();
-        println(ho+":"+mi+":"+se); 
+        println();   
+        //println(ho+":"+mi+":"+se);
+        println(Now_datetime);
         println("ch1 = " + isPressedCh1Button); 
         println("roof status = " + isPressedroofButton); 
         println("roof open reservation = " + isPressedCh6Button);
@@ -385,8 +385,11 @@ void twitter_send(String twitter_masaage) {
   
 try
     {
+      Date twitter_d = new Date();
+      long twitter_timestamp = twitter_d.getTime();
+      String twitter_datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(twitter_timestamp);
       //String  twitter_masaage_time = twitter_masaage + year() + month() + day() + hour() + minute() + second();
-      String  twitter_masaage_time = twitter_masaage + datetime;
+      String  twitter_masaage_time = twitter_masaage + twitter_datetime ;
       Status status = twitter.updateStatus(twitter_masaage_time);
       //Status status = twitter.updateStatus(twitter_masaage);
       System.out.println("Status updated to [" + status.getText() + "]." );
