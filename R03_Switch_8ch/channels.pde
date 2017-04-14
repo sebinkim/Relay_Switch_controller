@@ -1,56 +1,27 @@
 public void ch1_on() {
   if (connectedSerial) {
       serial.write('q');  println("type 'q'");  status_text("Ch1 on");   delay(30); 
-    serial.write('q');  println("type 'q'");  status_text("Ch1 on");   delay(30);
-    twitter_send("The Camera is turned on for captuering anallemma!! This is a tweet sent from SRCROOF_R03!! ");
+      twitter_send("The Camera is turned on for captuering anallemma!! This is a tweet sent from SRCROOF_R03!! ");
   }
+if (isPressedCh1Button == false) {
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(true);
   messageBoxResult = -1;
+}
 }
 
 public void ch1_off() {
   createModalDialog("Are you sure to turn Anallemma Camera Power off?");
   if (messageBoxResult >= 1) return;
   if (connectedSerial) {
-    serial.write('a'); 
-    println("type 'a'");
-    status_text("Ch1 off"); 
-    delay(30);
-    serial.write('a'); 
-    println("type 'a'");
-    status_text("Ch1 off"); 
-    delay(30);
+    serial.write('a'); println("type 'a'"); status_text("Ch1 off"); delay(30);
   }
+  if (isPressedCh1Button == true) {
   isPressedCh1Button = !isPressedCh1Button;
   ((Toggle)cp5.getController("on1/off1")).setState(false);
   messageBoxResult = -1;
+  }
 }
-
-/* 
- public void ch2_on() { 
- if (connectedSerial) {
- serial.write('w'); println("type 'w'");
- status_text("Ch2 on");
- }
- isPressedCh2Button = !isPressedCh2Button;
- ((Toggle)cp5.getController("on2/off2")).setState(true);
- messageBoxResult = -1;
- }
- 
- 
- public void ch2_off() {
- createModalDialog("ch2 off");
- if (messageBoxResult >= 1) return;
- if (connectedSerial) {
- serial.write('s');
- status_text("Ch2 off");
- }
- isPressedCh2Button = !isPressedCh2Button;
- ((Toggle)cp5.getController("on2/off2")).setState(false);
- messageBoxResult = -1;
- }   
- */
 
 
 public void One_shot() { //One shot
@@ -69,6 +40,7 @@ public void Bulb_on() { //Bulb shot start
     status_text("Bulb shot on");
   }
 }
+
 public void Bulb_off() { //Bulb shot stop
   if (connectedSerial) {
     serial.write('s');
@@ -79,13 +51,13 @@ public void Bulb_off() { //Bulb shot stop
 
 public void ch3_on() {
   if (connectedSerial) {
-    serial.write('e'); 
-    status_text("Ch3 on"); 
-    delay(50);
+    serial.write('e'); status_text("Ch3 on"); delay(50);
   }
+  if (isPressedCh3Button == false) {
   isPressedCh3Button = !isPressedCh3Button;
   ((Toggle)cp5.getController("on3/off3")).setState(true);
   messageBoxResult = -1;
+  }
 }
 
 public void ch3_off() {
@@ -96,9 +68,11 @@ public void ch3_off() {
     println("type 'd'");
     status_text("Ch3 off");
   }
+  if (isPressedCh3Button == true) {
   isPressedCh3Button = !isPressedCh3Button;
   ((Toggle)cp5.getController("on3/off3")).setState(false);
   messageBoxResult = -1;
+  }
 }
 
 public void ch4_on() {
@@ -107,9 +81,11 @@ public void ch4_on() {
     println("type 'r'");
     status_text("Ch4 on");
   }
+  if (isPressedCh4Button == false) {
   isPressedCh4Button = !isPressedCh4Button;
   ((Toggle)cp5.getController("on4/off4")).setState(true);
   messageBoxResult = -1;
+  }
 }
 
 public void ch4_off() {
@@ -121,9 +97,11 @@ public void ch4_off() {
     println("type 'f'");
     status_text("Ch4 off");
   }
+  if (isPressedCh4Button == true) {
   isPressedCh4Button = !isPressedCh4Button;
   ((Toggle)cp5.getController("on4/off4")).setState(false);
   messageBoxResult = -1;
+  }
 }
 
 public void ch5_on() {
@@ -132,9 +110,11 @@ public void ch5_on() {
     println("type 't'");
     status_text("Ch5 on");
   }
+  if (isPressedCh5Button == false) {
   isPressedCh5Button = !isPressedCh5Button;
   ((Toggle)cp5.getController("on5/off5")).setState(true);
   messageBoxResult = -1;
+  }
 }
 
 public void ch5_off() {
@@ -143,9 +123,11 @@ public void ch5_off() {
   if (connectedSerial) {
     serial.write('g'); println("type 'g'"); status_text("Ch5 off");
   }
+  if (isPressedCh5Button == true) {
   isPressedCh5Button = !isPressedCh5Button;
   ((Toggle)cp5.getController("on5/off5")).setState(false);
   messageBoxResult = -1;
+  }
 }
 public void ch6_on() {
   createModalDialog("Are you sure to open roof?");
@@ -157,19 +139,22 @@ public void ch6_on() {
     delay(50);
   twitter_send("The SRCROOF is opened!! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedroofButton == false) {
   isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(true);
   messageBoxResult = -1;
+  }
 }
 
 public void ch6_on_on() {
   if (connectedSerial) {
     serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(30); 
-    serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(30);
-twitter_send("The SRCROOF is opened autometically!! This is a tweet sent from SRCROOF_R03!! ");
+    twitter_send("The SRCROOF is opened autometically!! This is a tweet sent from SRCROOF_R03!! ");
   }
+  if (isPressedroofButton == false) {
   isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(true);
+  }
 }
 
 public void res6_on() {
