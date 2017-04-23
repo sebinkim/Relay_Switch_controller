@@ -16,8 +16,8 @@ ControlP5 cp5;
 int ROpen_ho = 11 ;
 int ROpen_mi = 0 ;
 int ROpen_se = 3 ;
-int RClose_ho = 14 ;
-int RClose_mi = 0 ;
+int RClose_ho = 15 ;
+int RClose_mi = 30 ;
 int RClose_se = 3 ;
 
 Textfield P;
@@ -250,6 +250,7 @@ void Disconnect(int theValue)
 {
   if (connectedSerial)//Check if there is a connection established
   {
+    serial.write('a'); println("type 'a'"); status_text("Ch1 off"); delay(30);
     serial.stop();
     serial = null;
     connectedSerial = false;
@@ -322,14 +323,16 @@ void draw() {
 void beattime(int ho, int mi, int se) {
   fill(255);
   rect(275, 70, 180, 20);
+  rect(280, ch_button_y0+ch_button_h*0+30, 120, 20);
+  rect(280, ch_button_y0+ch_button_h*1+25, 120, 20);
+  
   fill(0);
   textFont(f, 20);
   textAlign(LEFT);
   textSize(13);
   text("Com Clock        " + ho + " : " + mi + " : " + se, 285, 85);
   fill(255);
-  rect(280, ch_button_y0+ch_button_h*0+30, 120, 20);
-  rect(280, ch_button_y0+ch_button_h*1+25, 120, 20);
+  
   fill(0);
   textFont(f, 20);
   textAlign(LEFT);

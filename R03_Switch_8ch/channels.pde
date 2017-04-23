@@ -151,10 +151,10 @@ public void ch6_on_on() {
     serial.write('y'); println("type 'y'"); status_text("Roop Open"); delay(30); 
     twitter_send("The SRCROOF is opened autometically!! This is a tweet sent from SRCROOF_R03!! ");
   }
-  if (isPressedroofButton == false) {
+    if (isPressedroofButton == false) {
   isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(true);
-  }
+}
 }
 
 public void res6_on() {
@@ -186,21 +186,25 @@ public void ch7_on() {
     serial.write('u'); println("type 'u'"); status_text("Roof close");
 twitter_send("The SRCROOF is closed!! This is a tweet sent from SRCROOF_R01!! ");
   }
+if (isPressedroofButton == true) {
   isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(false);
-  messageBoxResult = -1;
+   messageBoxResult = -1;
+  }
 }
 public void ch7_on_on() {
   if (connectedSerial) {
     serial.write('u'); println("type 'u'"); delay(20);
     serial.write('u'); println("type 'u'"); delay(20);
     status_text("Roop Close");
-twitter_send("The SRCROOF is closed automatically!! This is a tweet sent from SRCROOF_R03!! ");
+  twitter_send("The SRCROOF is closed automatically!! This is a tweet sent from SRCROOF_R03!! ");
   }
-  isPressedroofButton = !isPressedroofButton;
+  if (isPressedroofButton == true) {
+    isPressedroofButton = !isPressedroofButton;
   ((Toggle)cp5.getController("opend/closed")).setState(false);
-}
-
+  }
+  }
+  
 public void res7_on() {
   if (connectedSerial) {
     println("type 'Res7 on'"); status_text("Res7 on");
