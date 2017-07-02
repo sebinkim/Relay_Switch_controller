@@ -1,4 +1,4 @@
-# Anallemma
+# Relay switch control for arduino base
 
 #libraries folder
 My Documents\processing\libraries
