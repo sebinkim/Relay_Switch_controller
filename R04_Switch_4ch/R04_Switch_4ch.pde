@@ -1,16 +1,17 @@
 import processing.serial.*;  
 import controlP5.*;
 import javax.swing.*;
+import twitter4j.conf.*;
+import twitter4j.*;
+import twitter4j.auth.*;
+import twitter4j.api.*;
+import java.util.*;
+
+Twitter twitter;
+
 Serial port;
 
 ControlP5 cp5;
-
-int ROpen_hh = 11 ;
-int ROpen_mm = 0 ;
-int ROpen_ss = 3 ;
-int RClose_hh = 14 ;
-int RClose_mm = 0 ;
-int RClose_ss = 3 ;
 
 Textfield P;
 Textfield I;
@@ -87,9 +88,6 @@ void setup()
 
     baudrate = cp5.addDropdownList("Baudrate_dropdown", 120, 70, 55, 200); // Make a dropdown with all the available baudrates   
     customize(baudrate); // Setup the dropdownlist by using a function
-
-    //ROpen_HH = cp5.addDropdownList("ROpen_dropdown", 385, 98, 25, 200); // Make a dropdown with all the available RoofOpen   
-    //customize(ROpen_HH); // Setup the dropdownlist by using a function
 
     cp5.addButton("Connect", 0, 185, 70, 52, 15);
     cp5.addButton("Disconnect", 0, 185, 88, 52, 15);
@@ -183,9 +181,20 @@ void controlEvent(ControlEvent theEvent) {
       portNumber = int(theEvent.getController().getValue());
     else if(theEvent.getName() == "Baudrate_dropdown")
       selectedBaudrate = int(theEvent.getController().getValue());
-    //else if(theEvent.getName() == "ROpen_dropdown")
-    //selectedOH = int(theEvent.getController().getValue());
   }
+}
+
+//added for twitter
+{
+  ConfigurationBuilder cb = new ConfigurationBuilder();
+  cb.setOAuthConsumerKey("AzvQgqGxCzzyUk78wg3q9TEcO");
+  cb.setOAuthConsumerSecret("rNHgvgXtA13lRRizXne3PAPIPgZWJjWDww5AOr7X5DCEklIzNw");
+  cb.setOAuthAccessToken("848078166883053568-mqymPaAQASoAjGsZnNNO0sEixHCo0sN");
+  cb.setOAuthAccessTokenSecret("v88Qd5Gq5LKZuXut0QhMdFa2aRpxB9L3ZxDInrN3duLbB");
+
+  TwitterFactory tf = new TwitterFactory(cb.build());
+
+  twitter = tf.getInstance();
 }
 
 void Connect(int theValue)
@@ -238,24 +247,24 @@ void createModalDialog(String message) {
 
 int previous_ss;
 
-void draw(){
-  int y = year();
-  int m = month();
-  int d = day();
-  int hh = hour();
-  int mm = minute();
-  int ss = second();
-  beattime(hh, mm, ss);
+void draw() {
+  int ye = year();
+  int mo = month();
+  int da = day();
+  int ho = hour();
+  int mi = minute();
+  int se = second();
+  beattime(ho, mi, se);
 }
 
-void beattime(int hh, int mm, int ss){
+void beattime(int ho, int mi, int se) {
   fill(255);
   rect(status_text_x,status_text_y-40,200,25);
   fill(0);
   textFont(f,20);
   textAlign(LEFT);
   textSize(13);
-  text("Com Clock        " + hh + " : " + mm + " : " + ss, status_text_x+20, status_text_y-23);
+  text("Com Clock        " + ho + " : " + mi + " : " + se, status_text_x+20, status_text_y-23);
   
   fill(0);
   fill(255);
@@ -265,13 +274,35 @@ void beattime(int hh, int mm, int ss){
   textAlign(LEFT);
   textSize(13);
   
+  Date d = new Date();
+  long timestamp = d.getTime();
+  String Now_datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(timestamp);
+  
   if(connectedSerial){
-    if(previous_ss != ss){
-    if (ss==0 || ss==15 || ss==30 || ss==45) {
-        println();
-        println(hh+":"+mm+":"+ss);  
+    if(previous_ss != se){
+    if (se==0 || se==15 || se==30 || se==45) {
+    println(Now_datetime);  
        }
     }
   }
-  previous_ss = ss;
+  previous_ss = se;
+}
+
+void twitter_send(String twitter_masaage) {
+try
+    {
+      Date twitter_d = new Date();
+      long twitter_timestamp = twitter_d.getTime();
+      String twitter_datetime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(twitter_timestamp);
+      //String  twitter_masaage_time = twitter_masaage + year() + month() + day() + hour() + minute() + second();
+      String  twitter_masaage_time = twitter_masaage + twitter_datetime ;
+      Status status = twitter.updateStatus(twitter_masaage_time);
+      //Status status = twitter.updateStatus(twitter_masaage);
+      System.out.println("Status updated to [" + status.getText() + "]." );
+    }
+    catch (TwitterException te)
+    {
+      System.out.println("Error: "+ te.getMessage());
+    }
+    
 }
