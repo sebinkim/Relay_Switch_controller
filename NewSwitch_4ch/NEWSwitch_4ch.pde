@@ -1,3 +1,32 @@
+/*
+ * Title       Relay Switch Controller
+ * by          Kiehyun Kevin Park
+ *
+ * Copyright (C) 2018 to 2018 Kiehyun Kevin Park.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Description:
+ *   Full featured stepper motor telescope focus controller.
+ *
+ * Author: Kiehyun Kevin Park
+ * 
+ *   Kiehyun.Park@gmail.com
+ *   Thank you for Jongwha Park, Seungwon Park. 
+ */
+
+
 import processing.serial.*;  
 import controlP5.*;
 import javax.swing.*;
@@ -26,7 +55,7 @@ PFont f;
 
 boolean useDropDownLists = true; // Set if you want to use the dropdownlist or not
 byte defaultComPort = 0;
-int defaultBaudrate = 115200;
+int defaultBaudrate = 9600;
 
 //Dialog
 int messageBoxResult = -1;
@@ -39,7 +68,7 @@ int portNumber = -1; // The dropdown list will return a float value, which we wi
 DropdownList baudrate;
 int selectedBaudrate = -1; // Used to indicate which baudrate has been selected
 String[] baudrates = {
-  "1200", "2400", "4800", "9600", "19200", "38400", "57600", "115200" // these are the supported baudrates by a module
+  "9600", "19200", "38400", "57600", "115200" // these are the supported baudrates by a module
 };
 
 boolean connectedSerial;
@@ -49,16 +78,8 @@ boolean isPressedCh2Button = false;
 boolean isPressedCh3Button = false;
 boolean isPressedCh4Button = false;
 
-// schduling
 
-int status_text_x = 20 ;
-int status_text_y = 600 ;
-int ch_button_x0 = 20 ;
-int ch_button_y0 = 300 ;
-int ch_button_w = 90 ;
-int ch_button_h = 70 ;
 // schduling
-
 int start_hh = 23 ;
 int start_mm= 5 ;
 int start_ss = 00 ;
@@ -73,7 +94,7 @@ void setup()
   } 
   
   cp5 = new ControlP5(this);
-  size(300, 650);
+  size(300, 600);
 
   f = loadFont("Arial-BoldMT-30.vlw");
   textFont(f, 30);
@@ -230,11 +251,9 @@ void Disconnect(int theValue)
     println("Couldn't disconnect");
 }
 
-
 void createModalDialog(String message) {
     messageBoxResult = JOptionPane.showConfirmDialog(frame, message);
 }
-
 
 int previous_ss;
 
@@ -248,7 +267,11 @@ void draw(){
   beattime(hh, mm, ss);
 }
 
+  int status_text_x = 20 ;
+  int status_text_y = 560 ;
+
 void beattime(int hh, int mm, int ss){
+  
   fill(255);
   rect(status_text_x,status_text_y-40,200,25);
   fill(0);
