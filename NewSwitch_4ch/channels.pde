@@ -1,3 +1,12 @@
+public void ch_on(char but, char msg1, String msg2, String name_but) {
+  if (connectedSerial) {
+    serial.write(but); println(msg1); status_text(msg2); delay(50); 
+    }
+  isPressedCh1Button = !isPressedCh1Button;
+  ((Toggle)cp5.getController(name_but)).setState(true);
+  messageBoxResult = -1;
+}
+
 public void ch1_on() {
   if (connectedSerial) {
     serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(50); serial.write('q'); println("type 'q'"); status_text("Ch1 on"); delay(50);
