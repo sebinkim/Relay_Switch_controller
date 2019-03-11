@@ -13,6 +13,10 @@ Serial port;
 
 ControlP5 cp5;
 
+int R_mount_off_ho = 5 ;
+int R_mount_mi = 0 ;
+int R_mount_se = 3 ;
+
 Textfield P;
 Textfield I;
 Textfield D;
@@ -104,6 +108,18 @@ void setup()
   set_buttons();
 }
 
+//added for twitter
+{
+  ConfigurationBuilder cb = new ConfigurationBuilder();
+  cb.setOAuthConsumerKey("AzvQgqGxCzzyUk78wg3q9TEcO");
+  cb.setOAuthConsumerSecret("rNHgvgXtA13lRRizXne3PAPIPgZWJjWDww5AOr7X5DCEklIzNw");
+  cb.setOAuthAccessToken("848078166883053568-mqymPaAQASoAjGsZnNNO0sEixHCo0sN");
+  cb.setOAuthAccessTokenSecret("v88Qd5Gq5LKZuXut0QhMdFa2aRpxB9L3ZxDInrN3duLbB");
+
+  TwitterFactory tf = new TwitterFactory(cb.build());
+
+  twitter = tf.getInstance();
+}
 
 void Abort(int theValue)
 {
@@ -184,18 +200,7 @@ void controlEvent(ControlEvent theEvent) {
   }
 }
 
-//added for twitter
-{
-  ConfigurationBuilder cb = new ConfigurationBuilder();
-  cb.setOAuthConsumerKey("AzvQgqGxCzzyUk78wg3q9TEcO");
-  cb.setOAuthConsumerSecret("rNHgvgXtA13lRRizXne3PAPIPgZWJjWDww5AOr7X5DCEklIzNw");
-  cb.setOAuthAccessToken("848078166883053568-mqymPaAQASoAjGsZnNNO0sEixHCo0sN");
-  cb.setOAuthAccessTokenSecret("v88Qd5Gq5LKZuXut0QhMdFa2aRpxB9L3ZxDInrN3duLbB");
 
-  TwitterFactory tf = new TwitterFactory(cb.build());
-
-  twitter = tf.getInstance();
-}
 
 void Connect(int theValue)
 {
